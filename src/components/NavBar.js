@@ -1,3 +1,5 @@
+import CartWidget from "./CartWidget";
+
 const NavBar = () => {
     return ( 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -33,6 +35,7 @@ const NavBar = () => {
                 <input className="form-control me-2" type="search" placeholder="Buscar mascotas" aria-label="Buscar"></input>
                 <button className="btn btn-outline-success" type="submit">Buscar</button>
             </form>
+            <CartWidget/>
             </div>
         </div>
         </nav>
