@@ -5,7 +5,10 @@ export const ItemListContainer = ({greeting}) => {
   return (
     <div>
       {greeting}
-    <ItemCount stock={0} initial={50} onAdd={(n) => alert(`Gracias por donar $${n}`)} />
+    <ItemCount 
+      stock={0} 
+      initial={50} 
+      onAdd={(n) => alert(`Gracias por donar $${n}`)} />
     </div>
   )
 }

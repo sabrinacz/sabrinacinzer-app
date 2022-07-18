@@ -1,4 +1,4 @@
-import CartWidget from "./CartWidget";
+import FavWidget from "./FavWidget";
 
 const NavBar = () => {
     return ( 
@@ -35,7 +35,7 @@ const NavBar = () => {
                 <input className="form-control me-2" type="search" placeholder="Buscar mascotas" aria-label="Buscar"></input>
                 <button className="btn btn-outline-success" type="submit">Buscar</button>
             </form>
-            <CartWidget/>
+            <FavWidget/>
             </div>
         </div>
         </nav>

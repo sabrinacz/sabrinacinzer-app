@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export const ItemCount = ({stock, initial, onAdd }) => {
+const ItemCount = ({stock, initial, onAdd }) => {
     const [count, setCount] = useState(initial);
     const increase = () => {
       setCount(count+50);

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CartWidget = () => {
+export const FavWidget = () => {
   return (
     <button className="btn btn-outline-success ms-auto">
        
@@ -23,4 +23,4 @@ export const CartWidget = () => {
   )
 }
 
-export default CartWidget;
+export default FavWidget;
