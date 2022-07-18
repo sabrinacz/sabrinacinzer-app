@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const ItemCount = ({stock, initial, onAdd }) => {
     const [count, setCount] = useState(initial);
@@ -12,9 +12,9 @@ const ItemCount = ({stock, initial, onAdd }) => {
     <div>
         <p>Realizá tu donación. Mínimo $50</p>
         <h3>{count}</h3>
-        <button onClick={decrease}> - </button>
-        <button onClick={increase} > + </button>
-        <button
+        <button class="btn btn-secondary" onClick={decrease}> - </button>
+        <button class="btn btn-secondary" onClick={increase} > + </button>
+        <button class="btn btn-secondary"
         onClick={() => {
           if (count >= stock) {
             onAdd(count);
