@@ -51,7 +51,7 @@ const getData = new Promise((resolve, reject) => {
       } else {
         reject("Failed to get data");
       }
-    }, 2000);
+    }, 4000);
   });
   
   export default getData;

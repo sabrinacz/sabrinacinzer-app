@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import { Outlet, Link } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer/Footer';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import './App.css';
 import "./styles.css";
@@ -30,7 +32,8 @@ function App() {
       ) : (
       <div>
       <NavBar />
-      <ItemListContainer greeting = {"Este es el item list container"} />
+      <Outlet/>
+      <Footer />
       </div>
       )}  
     </div>
