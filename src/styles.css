@@ -76,3 +76,9 @@ h3 {
 .loadinganimation {
     margin: auto;
 }
+
+.footer-container {
+    display: flex;
+    min-height: 300px;
+    background-color: var(--gray10);
+}

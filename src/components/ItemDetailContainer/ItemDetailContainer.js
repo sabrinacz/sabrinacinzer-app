@@ -1,28 +1,20 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
 
 
 const ItemDetailContainer = ({}) => {
-  /* 
-  const [result, setResult] = useState([]);
+/*  
+  let params = useParams();
+  console.log(params);
+
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
-  // cuenta = [value, seter] = [val, setValue] 
+  const [err, setErr] = useState("");
 
-  //Async/Await
-  //Syntactic sugar. Doesn't block the execution of the rest of the code.
-  const detail = {
-    "id": 1,
-    "name": "Terry",
-    "type": "dog",
-    "age": 2,
-    "time": "años",
-    "description": "Cuando quiero mimos me encanta venir a pedírtelos, me llevo bien con todo. Me adapta a cualquier espacio. Soy juguetón y me encanta pasear, voy super tranquilo.",
-    "pictureUrl": `${process.env.PUBLIC_URL}/assets/Terry.jpeg`
-    };
-
-    /* 
-    useEffect(() => {
+  useEffect(() => {
+    fetch(pets + params.id)
     const getItem = async () => {
       try {
         const response = await getData;
@@ -34,9 +26,9 @@ const ItemDetailContainer = ({}) => {
       }
     };
     getItem();
-    }, []);  
+  }, [params.id]);  
     
-   
+ 
   useEffect((detail)=> {
     detail;
     .then((res) => res.json());
@@ -56,5 +48,6 @@ const ItemDetailContainer = ({}) => {
   )
 };
 */
+
 }
 export default ItemDetailContainer;

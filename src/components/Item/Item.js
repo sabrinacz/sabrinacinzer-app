@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Item = ({ pet }) => {
@@ -12,7 +13,7 @@ const Item = ({ pet }) => {
         <div class="picture-container">
           <img src={pictureUrl} alt="{name}"/>
         </div>
-        <a class="btn btn-primary" href={"/" + id}>Ver detalle</a>
+        <Link class="btn btn-primary" to={"pet/" + id}>Ver detalle</Link>
     </div>
   )
 }

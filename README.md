@@ -1,3 +1,5 @@
+This project was created by Sabrina Cinzer, in 2022.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
