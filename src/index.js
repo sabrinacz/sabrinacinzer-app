@@ -20,6 +20,7 @@ root.render(
         <Route path="main" index element={<Main/>}/>
         <Route path="contact" element={<Contact/>}/>
           <Route path="category" element={<ItemListContainer/>}>
+            <Route path="all" element={<ItemListContainer/>}/>
             <Route path="cats" element={<Cats/>}/>
             <Route path="dogs" element={<Dogs/>}/>
           </Route>

@@ -37,7 +37,15 @@ const NavBar = () => {
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <NavLink
-                            to="/category/Cats" 
+                            to="/category/all" 
+                            className="dropdown-item"
+                            aria-current="page">
+                                Todos
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                            to="/category/cats" 
                             className="dropdown-item"
                             aria-current="page">
                                 Gatos
@@ -45,7 +53,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <NavLink
-                            to="/category/Dogs" 
+                            to="/category/dogs" 
                             className="dropdown-item"
                             aria-current="page">
                                 Perros

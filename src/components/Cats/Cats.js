@@ -5,14 +5,11 @@ const Cats = ({pets}) => {
   return (
     <div className="item-list-container">
         <h3>Cats</h3>
-        {pets?.map((pet, id, self) => {
-        if (pet.type === "cat") {
-            return <Item 
-            pet={pet} 
-            key={pet.id} 
-            type={pet.type} 
-            name={pet.name} 
-            id={id}/>
+
+        {pets.map((pet) => {
+        if (pet.type == "cat") {
+        console.log("Cat: ", pet);
+        return pet;
         }    
         })} 
     </div>

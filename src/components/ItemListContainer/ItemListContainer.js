@@ -30,9 +30,6 @@ const ItemListContainer = () => {
 
   console.log("Pets Array: ", pets);
 
-  let type = (pets.map((el)=> el.type));
-  console.log(type);
-
   return (
     <div>  
       <h1>Nuestros rescatados</h1>   
