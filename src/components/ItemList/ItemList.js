@@ -1,29 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Item from '../Item/Item';
 
 const ItemList = ({pets}) => {
   
+  let resultingArray;
 
-  // let catsArray = pets.filter (function (pet) {
-  //   return pet.type === "cat";
-  // })
-  // console.log("Cats are:", catsArray)
-
-  // let dogsArray = pets.filter (function (pet) {
-  //   return pet.type === "dog";
-  // })
-  // console.log("Dogs are:", dogsArray)
-
-  // let filteringPets = ((myArray) => {
-  //   myArray.map((pet, id, self) => {
-  //     console.log(pet);
-  //     return <Item 
-  //           pet={pet} 
-  //           key={pet.id} 
-  //           type={pet.type} 
-  //           name={pet.name} 
-  //           id={id}/> })
-  //   })
+  let AllPets = 
+    pets.map ((pet,id) => {
+        return pet;
+      });
 
   let Dogs = 
     pets.filter(function(pet)  {
@@ -37,27 +22,40 @@ const ItemList = ({pets}) => {
         return pet;
       });
 
-  let resultingArray=Cats;
+  resultingArray=AllPets;
 
   //Maps the resulting array
   function mapResultingArray(resultingArray) {
     return resultingArray.map((pet,id)=> {
-      console.log(pet);
       return <Item 
       pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>;
       });
   };
- 
+  
+  //Redefines the current array with button clicks below
+  function redefineArray(e, parameter) {
+    console.log("Filtrar por", parameter);
+    return resultingArray=parameter;
+   }
 
+  function filteringStarted(e, parameter) {
+    redefineArray(resultingArray);
+    mapResultingArray(resultingArray);
+  }
+   
+ 
+  console.log("Pets are:", AllPets);
+  console.log("Dogs are:", Dogs);
   console.log("Cats are:", Cats);
 
 
   return (
     <div>
-      <a href="Cats">Gatos</a> 
-      <a href="Dogs">Perros</a>  
+      <button onClick={(e)=> redefineArray(e, 'AllPets')} href="AllPets">Todos</button> 
+      <button onClick={(e)=> redefineArray(e, 'Cats')}>Gatos</button> 
+      <button onClick={(e)=> redefineArray(e, 'Dogs')} href="Dogs">Perros</button>  
       <div className="item-list-container">
-            {  mapResultingArray(resultingArray)}  
+            {mapResultingArray(resultingArray)}  
       </div>
     </div>
   )
