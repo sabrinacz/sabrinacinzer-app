@@ -33,14 +33,11 @@ const ItemListContainer = () => {
   return (
     <div>  
       <h1>Nuestros rescatados</h1>   
-      <Link to="Cats">Gatos</Link> 
-      <Link to="Dogs">Perros</Link>  
-      <Outlet/>
-       
-      {loading ?
-      <span> Loading...</span> : 
-      <ItemList pets={pets}/>
-      }
+      {loading ? (
+      <span> Cargando...</span> 
+      ) : (
+      <ItemList pets={pets}/> 
+      )}
     </div>
   )
 };
