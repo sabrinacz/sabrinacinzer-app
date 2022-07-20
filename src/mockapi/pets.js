@@ -7,7 +7,7 @@ const pets = [
         "type": "dog",
         "age": 2,
         "time": "años",
-        "description": "Cuando quiero mimos me encanta venir a pedírtelos, me llevo bien con todo. Me adapta a cualquier espacio. Soy juguetón y me encanta pasear, voy super tranquilo.",
+        "description": "Cuando quiero mimos me encanta venir a pedírtelos, me llevo bien con todo. Me adapto a cualquier espacio. Soy juguetón y me encanta pasear.",
         "pictureUrl": `${process.env.PUBLIC_URL}/assets/Terry.jpeg`
     },
     {
@@ -25,7 +25,7 @@ const pets = [
         "type": "cat",
         "age": 1.5,
         "time": "años",
-        "description": "Soy super juguetona y mimosa. Me encanta dormir en la cama y estar acompañada”. Me llevo bien con gatos.",
+        "description": "Soy super juguetona y mimosa. Me encanta dormir en la cama y estar acompañada. Me llevo bien con gatos.",
         "pictureUrl": `${process.env.PUBLIC_URL}/assets/Magma.jpeg`
     },
     {
@@ -34,7 +34,7 @@ const pets = [
         "type": "dog",
         "age": 1,
         "time": "meses",
-        "description": "Tienen aprox 45 dias, ya fueron a la veterinaria y anda todo bien. Fueron desparasitados y despulgados. Son muy cariñosos, les gusta jugar con peluches y que les hagan muchos mimos.",
+        "description": "Soy muy cariñoso, me gusta jugar con peluches y que me hagan muchos mimos.",
         "pictureUrl": `${process.env.PUBLIC_URL}/assets/Lorcan.jpeg`
     }
 

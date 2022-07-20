@@ -51,9 +51,9 @@ const ItemList = ({pets}) => {
 
   return (
     <div>
-      <button onClick={(e)=> redefineArray(e, 'AllPets')} href="AllPets">Todos</button> 
-      <button onClick={(e)=> redefineArray(e, 'Cats')}>Gatos</button> 
-      <button onClick={(e)=> redefineArray(e, 'Dogs')} href="Dogs">Perros</button>  
+      <button onClick={(e)=> redefineArray(e, 'AllPets')} className="btn btn-primary">Todos</button> 
+      <button onClick={(e)=> redefineArray(e, 'Cats')} className="btn btn-primary pr-2">Gatos</button> 
+      <button onClick={(e)=> redefineArray(e, 'Dogs')} className="btn btn-primary pr-2">Perros</button>  
       <div className="item-list-container">
             {mapResultingArray(resultingArray)}  
       </div>
