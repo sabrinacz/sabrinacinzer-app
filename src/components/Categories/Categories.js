@@ -2,22 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import Item from '../Item/Item';
 
-const ItemList = ({pets}) => {
-
-  // //Redefines the current array with button clicks below
-  // function handleClick(e, parameter) {
-  //   console.log("Filtrar por", parameter);
-  //   return resultingArray=parameter;
-  //  }
+const Categories = ({pets}) => {
   const [categories, setCategory] = useState([
     { "name": "Gatos", "idCategory": "cat" },
     { "name": "Perros", "idCategory": "dog" }
   ]);
 
   console.log("categories: ", categories);
-
-  console.log("pet type:", categories);
-
   // function mapPetList(pets, idCategory) {
   //   if(idCategory){  
   //   pets.filter(pets => pets.type === idCategory);
@@ -50,17 +41,9 @@ function mapResultingArray(resultingArray) {
                     className="btn btn-primary">{catg.name}
                 </Link>
                 })}  
-                <Outlet/>
-
-      <div className="item-list-container">
-            {/* {pets.map((pet,id)=> {
-              return <Item 
-              pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
-             })}  */}
-             {mapResultingArray(pets)}
-      </div>
+     <Outlet/>
     </div>
   )
 };
 
-export default ItemList;
+export default Categories;

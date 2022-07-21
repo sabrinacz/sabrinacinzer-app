@@ -5,6 +5,7 @@ import Cats from '../Cats/Cats';
 import Dogs from '../Dogs/Dogs';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
+import { Button } from 'bootstrap';
 
 const ItemListContainer = ({}) => {
   function onAddCallback(n) {
@@ -14,21 +15,15 @@ const ItemListContainer = ({}) => {
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  let idCategory ="dog";
+
+
   // Promise 
   useEffect(() => {
-    if(idCategory) {
-      getData
-        .then((data) => {setPets(data.filter( pets => pets.type === idCategory));})
-        .catch((err) => {console.log(err);})
-        .finally(() => {setLoading(false);});
-      }
-    else {
         getData
           .then((data) => {setPets(data);})
           .catch((err) => {console.log(err);})
           .finally(() => {setLoading(false);});
-        }
+        
   }, []);
 
   console.log("Pets Array: ", pets);
@@ -41,7 +36,6 @@ const ItemListContainer = ({}) => {
       ) : (
       <div>
         <ItemList pets={pets}/> 
-        <Outlet/>
       </div>
       )}
     </div>
