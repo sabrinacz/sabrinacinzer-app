@@ -32,7 +32,6 @@ function mapResultingArray(resultingArray) {
   return (
     <div>
       <h3>vista de categorías</h3>
-
       <Link to={"/category/"} className="btn btn-primary">Todos</Link> 
         {categories.map((catg)=> {
         return <Link name={catg.name} 

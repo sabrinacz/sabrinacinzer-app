@@ -4,36 +4,32 @@ import Item from '../Item/Item';
 
 const ItemList = ({pets}) => {
 
-  // //Redefines the current array with button clicks below
-  // function handleClick(e, parameter) {
-  //   console.log("Filtrar por", parameter);
-  //   return resultingArray=parameter;
-  //  }
   const [categories, setCategory] = useState([
     { "name": "Gatos", "idCategory": "cat" },
     { "name": "Perros", "idCategory": "dog" }
   ]);
 
-  console.log("categories: ", categories);
+
+  console.log("pets: ", pets);
 
   console.log("pet type:", categories);
 
-  // function mapPetList(pets, idCategory) {
-  //   if(idCategory){  
-  //   pets.filter(pets => pets.type === idCategory);
-  //   const { id, name, type, age, time, description, pictureUrl } = pets;
-  //   } else {
-  //     pets.map(pets => pets);
-  //     const { id, name, type, age, time, description, pictureUrl } = pets;
-  //   }
-  //   return pets
-  //   }
+  function mapPetList(pets, idCategory) {
+    console.log("holi");
+    let resultingArray;
+    if(idCategory){  
+      pets.filter(pets => pets.type === idCategory);
+      const { id, name, type, age, time, description, pictureUrl } = pets;
+      return resultingArray = mapResultingArray(pets)
+      } else {
+        const { id, name, type, age, time, description, pictureUrl } = pets;
+        return resultingArray = mapResultingArray(pets)
+      }}
 
-  //   mapPetList(pets, categories);
 
 //Maps the resulting array
-function mapResultingArray(resultingArray) {
-  return resultingArray.map((pet,id)=> {
+function mapResultingArray(array) {
+  return array.map((pet,id)=> {
     return <Item 
     pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>;
     });
@@ -41,23 +37,22 @@ function mapResultingArray(resultingArray) {
   return (
     <div>
       <h3>vista de categorías</h3>
-
-      <Link to={"/category/"} className="btn btn-primary">Todos</Link> 
+  
         {categories.map((catg)=> {
-        return <Link name={catg.name} 
+                    return <Link name={catg.name} 
+                    onClick={()=>mapPetList(catg.idCategory)}
                     idCategory={catg.idCategory} 
                     to={"/category/" + catg.idCategory} 
                     className="btn btn-primary">{catg.name}
                 </Link>
-                })}  
-                <Outlet/>
+                })}   
 
       <div className="item-list-container">
             {/* {pets.map((pet,id)=> {
               return <Item 
               pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
              })}  */}
-             {mapResultingArray(pets)}
+             {mapPetList(pets)}
       </div>
     </div>
   )
