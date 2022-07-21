@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
             <NavLink 
-                to="/main" 
+                to="/" 
                 className={({isActive}) =>
                 isActive ? "nav-link active" : "nav-link"
                 }
@@ -21,7 +21,7 @@ const NavBar = () => {
 
                 <li className="nav-item">
                 <NavLink 
-                    to="/main" 
+                    to="/" 
                     className={({isActive}) =>
                     isActive ? "nav-link active" : "nav-link"
                     }
@@ -37,7 +37,7 @@ const NavBar = () => {
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <NavLink
-                            to="/category/all" 
+                            to="/type/all" 
                             className="dropdown-item"
                             aria-current="page">
                                 Todos
@@ -45,7 +45,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <NavLink
-                            to="/category/cats" 
+                            to={`/type/Cats`} 
                             className="dropdown-item"
                             aria-current="page">
                                 Gatos
@@ -53,7 +53,7 @@ const NavBar = () => {
                         </li>
                         <li>
                             <NavLink
-                            to="/category/dogs" 
+                            to="/type/dogs" 
                             className="dropdown-item"
                             aria-current="page">
                                 Perros
