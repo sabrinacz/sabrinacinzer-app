@@ -15,23 +15,33 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false); 
-    }, 2000);
+    }, 100);
     console.log('useEffect');
   }, []);
 
+  // return (
+  //   <div className="App">
+  //     {loading ? ( // RENDERIZADO CONDICIONAL Si loading, cargando. si es falso, muestra la app.
+  //     <div id="loadingscreen">
+  //       <h3 class="loadinganimation"> Cargando app... </h3>
+  //     </div>
+  //     ) : (
+  //     <div>
+  //     <NavBar />
+  //     <Outlet/>
+  //     <Footer />
+  //     </div>
+  //     )}  
+  //   </div>
+  // );
+
   return (
     <div className="App">
-      {loading ? ( // RENDERIZADO CONDICIONAL Si loading, cargando. si es falso, muestra la app.
-      <div id="loadingscreen">
-        <h3 class="loadinganimation"> Cargando app... </h3>
-      </div>
-      ) : (
       <div>
       <NavBar />
       <Outlet/>
       <Footer />
       </div>
-      )}  
     </div>
   );
 } 

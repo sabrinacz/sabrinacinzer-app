@@ -1,30 +1,20 @@
 import React, {useState, useEffect} from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import Item from '../Item/Item';
 
 const ItemList = ({pets}) => {
-
+  
   const [categories, setCategory] = useState([
     { "name": "Gatos", "idCategory": "cat" },
     { "name": "Perros", "idCategory": "dog" }
   ]);
 
-
   console.log("pets: ", pets);
+  console.log("pet categories:", categories);
 
-  console.log("pet type:", categories);
-
-  function mapPetList(pets, idCategory) {
-    console.log("holi");
-    let resultingArray;
-    if(idCategory){  
-      pets.filter(pets => pets.type === idCategory);
-      const { id, name, type, age, time, description, pictureUrl } = pets;
-      return resultingArray = mapResultingArray(pets)
-      } else {
-        const { id, name, type, age, time, description, pictureUrl } = pets;
-        return resultingArray = mapResultingArray(pets)
-      }}
+  function handleSelectedCategory(e) {
+    setCategory(e.target.value)
+  }
 
 
 //Maps the resulting array
@@ -37,10 +27,14 @@ function mapResultingArray(array) {
   return (
     <div>
       <h3>vista de categorías</h3>
-  
+        <Link to={"/category/"}
+              onClick={()=>handleSelectedCategory()}
+              className="btn btn-primary"> 
+              Todos 
+              </Link>
         {categories.map((catg)=> {
                     return <Link name={catg.name} 
-                    onClick={()=>mapPetList(catg.idCategory)}
+                    onClick={()=>handleSelectedCategory()}
                     idCategory={catg.idCategory} 
                     to={"/category/" + catg.idCategory} 
                     className="btn btn-primary">{catg.name}
@@ -52,7 +46,7 @@ function mapResultingArray(array) {
               return <Item 
               pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
              })}  */}
-             {mapPetList(pets)}
+             {mapResultingArray(pets)}<Outlet/>
       </div>
     </div>
   )
