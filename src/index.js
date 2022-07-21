@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Contact from './views/Contact';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import Favorites from './components/Favorites/Favorites';
+import Item from './components/Item/Item';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import Favorites from './components/Favorites/Favorites';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +20,7 @@ root.render(
         <Route path="contact" element={<Contact/>}/>
         <Route path="category" element={<ItemListContainer/>}/>
         <Route path="category/:idCategory" element={<ItemListContainer/>}/>
-        <Route path="pet/:id" element={<ItemDetailContainer/>}/>
+        <Route path="/pet/:id" render={props => <ItemDetailContainer {...props}/>} element={<ItemDetailContainer/>}/>
         <Route path="favorites" element={<Favorites/>}/>
         <Route path="*" element={<div>Ups! No encontramos esa URL.</div>}/>
       </Route>

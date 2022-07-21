@@ -38,6 +38,11 @@ h3 {
 .item-list-container {
     display: flex;
     flex-wrap: wrap;
+    min-height: 50vh;
+}
+
+.loading-items {
+    margin: auto;
 }
 
 .picture-container {
@@ -54,16 +59,27 @@ h3 {
     height: 100%;
 }
 
+.button-filters .btn {
+    margin-right: 10px;
+}
+
 .btn-primary {
     background-color: var(--black90);
     border:1px solid var(--black90);
     color:var(--white);
 }
+
 .btn-secondary {
     background-color: var(--white);
     border:1px solid var(--black90);
     color:var(--black90);
 }
+
+.btn-active {
+    border-color:var(--black90);
+    color:var(--black90);
+    background-color: white;
+} 
 
 #loadingscreen {
     background-color:#f2f3f4;

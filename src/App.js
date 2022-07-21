@@ -28,7 +28,7 @@ function App() {
   //     ) : (
   //     <div>
   //     <NavBar />
-  //     <Outlet/>
+  //     <et/>
   //     <Footer />
   //     </div>
   //     )}  

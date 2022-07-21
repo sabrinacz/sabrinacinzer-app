@@ -1,7 +1,19 @@
+import React, {useState, useEffect} from 'react';
+import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import FavWidget from "./FavWidget";
-import { Link, NavLink } from 'react-router-dom';
 
 const NavBar = () => {
+
+    const [categories, setCategory] = useState([
+        { "name": "Gatos", "idCategory": "cat" },
+        { "name": "Perros", "idCategory": "dog" }
+      ]);
+
+      
+    function handleSelectedCategory(e) {
+        setCategory(e.target.value);
+    }
+
     return ( 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
@@ -35,25 +47,24 @@ const NavBar = () => {
                 Rescatados
                 </a>
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <NavLink
-                            to="/type/all" 
-                            className="dropdown-item"
-                            aria-current="page">
-                                Todos
+                        <li>            
+                            <NavLink to={"/category/"}
+                            onClick={()=>handleSelectedCategory()}
+                            className="dropdown-item"> 
+                            Todos 
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink
-                            to={`/type/Cats`} 
+                            <NavLink to={"/category/cat"} 
+                            onClick={()=>handleSelectedCategory()}
                             className="dropdown-item"
                             aria-current="page">
                                 Gatos
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink
-                            to="/type/dogs" 
+                            <NavLink to={"/category/dog"} 
+                            onClick={()=>handleSelectedCategory()}
                             className="dropdown-item"
                             aria-current="page">
                                 Perros

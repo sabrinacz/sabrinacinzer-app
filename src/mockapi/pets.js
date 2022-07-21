@@ -12,21 +12,21 @@ const pets = [
     },
     {
         "id": 2,
-        "name": "Diggle",
-        "type": "dog",
-        "age": 1,
-        "time": "años",
-        "description": "Soy muy amoroso y cariñoso, me encanta la compañía y jugar. Disfruto mucho de pasear así que es importante. Me gustaría que mi casita tenga otros perritos.",
-        "pictureUrl": `${process.env.PUBLIC_URL}/assets/Diggle.jpeg`
-    },
-    {
-        "id": 3,
         "name": "Magma",
         "type": "cat",
         "age": 1.5,
         "time": "años",
         "description": "Soy super juguetona y mimosa. Me encanta dormir en la cama y estar acompañada. Me llevo bien con gatos.",
         "pictureUrl": `${process.env.PUBLIC_URL}/assets/Magma.jpeg`
+    },
+    {
+        "id": 3,
+        "name": "Diggle",
+        "type": "dog",
+        "age": 1,
+        "time": "años",
+        "description": "Soy muy amoroso y cariñoso, me encanta la compañía y jugar. Disfruto mucho de pasear así que es importante. Me gustaría que mi casita tenga otros perritos.",
+        "pictureUrl": `${process.env.PUBLIC_URL}/assets/Diggle.jpeg`
     },
     {
         "id": 4,

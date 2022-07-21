@@ -12,9 +12,9 @@ const ItemCount = ({stock, initial, onAdd }) => {
     <div>
         <p>Realizá tu donación. Mínimo $50</p>
         <h3>{count}</h3>
-        <button class="btn btn-secondary" onClick={decrease}> - </button>
-        <button class="btn btn-secondary" onClick={increase} > + </button>
-        <button class="btn btn-secondary"
+        <button className="btn btn-secondary" onClick={decrease}> - </button>
+        <button className="btn btn-secondary" onClick={increase} > + </button>
+        <button className="btn btn-secondary"
         onClick={() => {
           if (count >= stock) {
             onAdd(count);
