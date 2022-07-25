@@ -41,14 +41,18 @@ h3 {
     min-height: 50vh;
 }
 
-.loading-items {
-    margin: auto;
+.item-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 50vh;
 }
 
-.picture-container {
-    width: auto;
-    aspect-ratio: 1 / 1; 
-    display: inline-block;
+.item-detail { 
+    display: flex;
+}
+
+.loading-items {
+    margin: auto;
 }
 
 .picture-container img {

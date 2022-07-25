@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
@@ -8,26 +8,24 @@ import "../../styles.css";
 const ItemDetailContainer = ({}) => {
 
   const {id} = useParams();
-  console.log("Los params del detail son", id);
   let idPet = id;
-  console.log(idPet)
+  console.log("The selected id is", idPet);
   // const {id} = useParams();
   // // filter data to get informations based on props "title"
   // const profile = Data.filter(pets => pets.id === title);
 
-  const [pets, setPets] = useState([]);
+  const [selectPets, setselectPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Promise 
   useEffect(() => {
+      if(idPet) {
       getData
-      .then((data) => {setPets(data);})
+      .then((data) => {setselectPets(data)})
       .catch((err) => {console.log(err);})
-      .finally(() => {setLoading(false);},100);
-      }, 
-  []);
-
-  console.log("Pets", pets );
+      .finally(() => {setLoading(false);});
+      };
+    },[]);
 
   function getPet (pets, idPet) {
     pets.filter( pets => pets.id === idPet);
@@ -35,14 +33,27 @@ const ItemDetailContainer = ({}) => {
     return pet;
   }
 
-  let returnedPet = (getPet(pets, idPet));
+  let returnedPet = (getPet(selectPets, idPet));
 
-  console.log("El pet es", getPet(pets, idPet), "con id", idPet );
+  console.log("Returned pet is", returnedPet, "with id", idPet );
 
   return (
     <div>
-        <h1> hola </h1>
-        <ItemDetail pet={returnedPet}/> 
+        <NavLink to={"/category/"}
+              className={"breadcrumb-link"}>
+              Volver a todos los rescatados
+        </NavLink>
+
+      {loading ? (
+      <div className="item-list-container">
+        <div className="loading-items"> Cargando... </div>
+      </div>
+      ) : (
+      <div>
+        <ItemDetail returnedPet={returnedPet} idPet={idPet}/> 
+      </div>
+      )}
+      
     </div>
   )
 }

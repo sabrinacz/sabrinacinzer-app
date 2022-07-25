@@ -9,9 +9,6 @@ import "../../styles.css";
 import { Button } from 'bootstrap';
 
 const ItemListContainer = ({}) => {
-  function onAddCallback(n) {
-    alert(`Agregaste ${n} productos`);
-  }
 
   const params = useParams();
   console.log("Los params son", params);
