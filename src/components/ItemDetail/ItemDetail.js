@@ -1,14 +1,23 @@
 import React from 'react';
-import Item from '../Item/Item';
-import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
+import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const ItemDetail = ({returnedPet, idPet}) => {
   console.log("ItemDetail is", returnedPet, idPet);
 
   const { id, name, type, age, time, description, pictureUrl } = returnedPet;
 
-  function onAddCallback(n) {
-    console.log(`Agregaste a favoritos`);
+  const [donation, setDonation] = useState();
+
+  function AddFavorite(e) {
+    //recibe por parametro a ItemCount
+    alert(`Agregaste a favoritos`);
+  }
+
+  const AddDonation = (donation) => {
+    setDonation(donation);
+    alert(`Gracias por donar $${donation}`)
   }
 
   return (
@@ -27,18 +36,19 @@ const ItemDetail = ({returnedPet, idPet}) => {
             <h3>{name}</h3>
             <p>{description}</p>
             <p>{age} {time}</p>
-            <Link to={``}
-                className="btn btn-primary" 
-                onClick={onAddCallback()}>Agregar a favoritos
-                </Link>
+            <p><strong>Seleccioná un monto y apadriná a {name}</strong><br/>(Entre $100 y $1000)</p>
+            <ItemCount stock={1000} initial={100} onAdd={AddDonation} /> 
+            {/* get the value with an onadd, it will modify onchange, save it in a state */}
+
+            <Link to={`/favorites`}
+                className="mt-2 btn btn-primary" 
+                onClick={AddFavorite}>Agregar a favoritos
+            </Link>
           </div>
         </div>
 
          
       </div>
-      <h3></h3>
-      <p></p>
-      <p></p>
     </div>
   );
 };

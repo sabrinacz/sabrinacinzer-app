@@ -5,7 +5,6 @@ import App from './App';
 import Contact from './views/Contact';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Favorites from './components/Favorites/Favorites';
-import Item from './components/Item/Item';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';

@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemCount from '../components/ItemCount/ItemCount';
+import donationCount from '../components/donationCount/donationCount';
 import ItemListContainer from '../components/ItemListContainer/ItemListContainer';
 import "../styles.css";
 
@@ -8,7 +8,7 @@ const Main = (greeting) => {
   return (
     <div>      
       <h1>{greeting}</h1> 
-      <ItemCount 
+      <donationCount 
         stock={0} 
         initial={50} 
         onAdd={(n) => alert(`Gracias por donar $${n}`)} />

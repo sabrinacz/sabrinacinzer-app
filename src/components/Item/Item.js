@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ItemDetail from '../ItemDetail/ItemDetail';
 
 
 const Item = ({ pet }) => {

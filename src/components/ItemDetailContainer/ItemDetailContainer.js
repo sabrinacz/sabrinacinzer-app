@@ -5,14 +5,11 @@ import getData from '../../mockapi/pets';
 import "../../styles.css";
 
 
-const ItemDetailContainer = ({}) => {
+const ItemDetailContainer = () => {
 
   const {id} = useParams();
   let idPet = id;
   console.log("The selected id is", idPet);
-  // const {id} = useParams();
-  // // filter data to get informations based on props "title"
-  // const profile = Data.filter(pets => pets.id === title);
 
   const [selectPets, setselectPets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +22,7 @@ const ItemDetailContainer = ({}) => {
       .catch((err) => {console.log(err);})
       .finally(() => {setLoading(false);});
       };
-    },[]);
+    },[idPet]);
 
   function getPet (pets, idPet) {
     pets.filter( pets => pets.id === idPet);

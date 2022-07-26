@@ -38,12 +38,6 @@ const ItemListContainer = ({}) => {
       .catch((err) => {console.log(err);})
       .finally(() => {setLoading(false);},100);
       }
-    // else if (idCategory && age){
-    //   getData
-    //   .then((data) => {setPets(data.filter( pets => (pets.type === idCategory) & (pets.age === age)));})
-    //   .catch((err) => {console.log(err);})
-    //   .finally(() => {setLoading(false);},100);
-    //   }
     }, 
   []);
 
@@ -54,16 +48,11 @@ const ItemListContainer = ({}) => {
     setCategory(e.target.value);
   }
 
-  // function handleSelectedAge(e) {
-  //   console.log("hola")
-  //   setAge(e.target.value);
-  // }
-
   return (
     <div>  
       <h1>Nuestros rescatados</h1> 
       <h5>Ver por...</h5>
-      <div class="button-filters">
+      <div className="button-filters">
         <NavLink to={"/category/"}
               onClick={()=>handleSelectedCategory()}
               className={({isActive}) =>
@@ -82,19 +71,9 @@ const ItemListContainer = ({}) => {
         })}     
       </div>
 
-      {/* <form>
-        <select className="form-select" aria-label="edad">
-          <option selected>Elegir edad</option>
-          <option onChange={()=>handleSelectedAge()} value="1">1 a 12 meses</option>
-          <option onChange={()=>handleSelectedAge()} value="2">1 a 4 años</option>
-          <option onChange={()=>handleSelectedAge()} value="3">5 a 9 años</option>
-          <option onChange={()=>handleSelectedAge()} value="4">+10 años</option>
-        </select>
-      </form>  */}
-
       {loading ? (
       <div className="item-list-container">
-        <div className="loading-items"> Cargando... </div>
+        <div className="loading-items"> Cargando rescatados... </div>
       </div>
       ) : (
       <div>

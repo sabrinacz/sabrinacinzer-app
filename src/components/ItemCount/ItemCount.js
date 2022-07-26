@@ -1,26 +1,30 @@
 import { useState } from 'react';
 
 const ItemCount = ({stock, initial, onAdd }) => {
+
     const [count, setCount] = useState(initial);
+
     const increase = () => {
-      setCount(count+50);
+      setCount((prevValue) => (prevValue < 1000 ? count + 50 : count));
     } 
     const decrease = () => {
-      setCount((prevValue) => (prevValue > 50 ? count - 50 : count));
+      setCount((prevValue) => (prevValue > 100 ? count - 50 : count));
     }
+    
   return (
     <div>
-        <p>Realizá tu donación. Mínimo $50</p>
-        <h3>{count}</h3>
+        <h3>${count}</h3>
         <button className="btn btn-secondary" onClick={decrease}> - </button>
         <button className="btn btn-secondary" onClick={increase} > + </button>
         <button className="btn btn-secondary"
         onClick={() => {
-          if (count >= stock) {
+          if (count <= stock) {
+            let donation = count;
             onAdd(count);
+            return donation;
           }
         }}
-        > Realizá tu donación </button>
+        > Quiero donar  </button>
     </div>
   )
 };

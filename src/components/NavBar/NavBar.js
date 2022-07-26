@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
+import SearchForm from '../SearchForm/SearchForm';
 import FavWidget from "./FavWidget";
 
 const NavBar = () => {
@@ -10,6 +11,11 @@ const NavBar = () => {
       ]);
 
       
+    const searchPets = () => {
+        
+        
+    }
+
     function handleSelectedCategory(e) {
         setCategory(e.target.value);
     }
@@ -97,10 +103,7 @@ const NavBar = () => {
                 </li>
 
             </ul>
-            <form className="d-flex">
-                <input className="form-control me-2" type="search" placeholder="Buscar mascotas" aria-label="Buscar"></input>
-                <button className="btn btn-outline-success" type="submit">Buscar</button>
-            </form>
+            <SearchForm onsearch={searchPets}/>
             <FavWidget/>
             </div>
         </div>

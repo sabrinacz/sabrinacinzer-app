@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Item from '../Item/Item';
 
 const ItemList = ({pets}) => {
