@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 const ItemDetail = ({returnedPet, idPet}) => {
-  console.log("ItemDetail is", returnedPet, idPet);
-
   const { id, name, type, age, time, description, pictureUrl } = returnedPet;
 
   const [donation, setDonation] = useState();
+  const [sponsor, setSponsor] = useState(false);
 
   function AddFavorite(e) {
     //recibe por parametro a ItemCount
@@ -17,8 +16,15 @@ const ItemDetail = ({returnedPet, idPet}) => {
 
   const AddDonation = (donation) => {
     setDonation(donation);
-    alert(`Gracias por donar $${donation}`)
+    setSponsor(true);
+    return donation;
   }
+
+  const RemoveDonation = (donation) => {
+    setSponsor(false);
+    console.log(`Donación de $${donation} eliminada`)
+  }
+
 
   return (
     <div className="item-detail-container container">
@@ -36,19 +42,32 @@ const ItemDetail = ({returnedPet, idPet}) => {
             <h3>{name}</h3>
             <p>{description}</p>
             <p>{age} {time}</p>
+          <div>
+            {/* If user sponsors, show them button to go to sponsored pets */}
+            {!sponsor
+            ?
+            <div>
             <p><strong>Seleccioná un monto y apadriná a {name}</strong><br/>(Entre $100 y $1000)</p>
-            <ItemCount stock={1000} initial={100} onAdd={AddDonation} /> 
-            {/* get the value with an onadd, it will modify onchange, save it in a state */}
-
-            <Link to={`/favorites`}
-                className="mt-2 btn btn-primary" 
-                onClick={AddFavorite}>Agregar a favoritos
-            </Link>
+            <ItemCount stock={1000} initial={100} onAdd={AddDonation} />      
+            </div>
+              :
+            <div>
+              <p><strong>Seleccionaste un monto de ${donation} para apadrinar a {name}</strong></p>
+              <Link to={``}
+                className="mt-2 btn btn-secondary"
+                onClick={()=>RemoveDonation(donation)}>Deshacer
+              </Link>
+              <Link to={`/Cart`}
+                className="mt-2 btn btn-primary">Ir a pagar
+              </Link>
+            </div>
+            }
           </div>
         </div>
 
          
       </div>
+    </div>
     </div>
   );
 };

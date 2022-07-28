@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import Contact from './views/Contact';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import Favorites from './components/Favorites/Favorites';
+import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
@@ -20,7 +20,7 @@ root.render(
         <Route path="category" element={<ItemListContainer/>}/>
         <Route path="category/:idCategory" element={<ItemListContainer/>}/>
         <Route path="/pet/:id" element={<ItemDetailContainer/>}/>
-        <Route path="favorites" element={<Favorites/>}/>
+        <Route path="Cart" element={<Cart/>}/>
         <Route path="*" element={<div>Ups! No encontramos esa URL.</div>}/>
       </Route>
     </Routes>
