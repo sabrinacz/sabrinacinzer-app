@@ -8,7 +8,7 @@ import getData from '../../mockapi/pets';
 import "../../styles.css";
 import { Button } from 'bootstrap';
 
-const ItemListContainer = ({}) => {
+const ItemListContainer = () => {
 
   const params = useParams();
   console.log("Los params son", params);
@@ -21,8 +21,6 @@ const ItemListContainer = ({}) => {
     { "name": "Gatos", "idCategory": "cat" },
     { "name": "Perros", "idCategory": "dog" }
   ]);
-
-  // const [age, setAge] = useState();
 
   // Promise 
   useEffect(() => {
@@ -39,14 +37,10 @@ const ItemListContainer = ({}) => {
       .finally(() => {setLoading(false);},100);
       }
     }, 
-  []);
+  [idCategory]);
 
   console.log("Pets Array: ", pets);
   console.log("Pet Categories:", categories);
-
-  function handleSelectedCategory(e) {
-    setCategory(e.target.value);
-  }
 
   return (
     <div>  
@@ -54,7 +48,6 @@ const ItemListContainer = ({}) => {
       <h5>Ver por...</h5>
       <div className="button-filters">
         <NavLink to={"/category/"}
-              onClick={()=>handleSelectedCategory()}
               className={({isActive}) =>
               isActive ? "btn btn-primary btn-active" : "btn btn-primary"}>
               Todos 
@@ -62,7 +55,6 @@ const ItemListContainer = ({}) => {
 
         {categories.map((catg)=> {
               return <NavLink name={catg.name} 
-              onClick={()=>handleSelectedCategory()}
               idCategory={catg.idCategory} 
               to={"/category/" + catg.idCategory} 
               className={({isActive}) =>

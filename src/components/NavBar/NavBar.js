@@ -16,9 +16,6 @@ const NavBar = () => {
         
     }
 
-    function handleSelectedCategory(e) {
-        setCategory(e.target.value);
-    }
 
     return ( 
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,14 +52,12 @@ const NavBar = () => {
                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>            
                             <NavLink to={"/category/"}
-                            onClick={()=>handleSelectedCategory()}
                             className="dropdown-item"> 
                             Todos 
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/category/cat"} 
-                            onClick={()=>handleSelectedCategory()}
+                            <NavLink to={"/category/cat"}
                             className="dropdown-item"
                             aria-current="page">
                                 Gatos
@@ -70,7 +65,6 @@ const NavBar = () => {
                         </li>
                         <li>
                             <NavLink to={"/category/dog"} 
-                            onClick={()=>handleSelectedCategory()}
                             className="dropdown-item"
                             aria-current="page">
                                 Perros

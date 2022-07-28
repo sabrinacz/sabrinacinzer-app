@@ -5,7 +5,8 @@ const SearchForm = ({onSearch}) => {
    
     const sendForm = (e)  => {
     e.preventDefault(); // Prevent submit
-    onSearch(val);
+    val && onSearch(val);
+    setVal('')
     };
 
     const onchangeInput = (e) => {
