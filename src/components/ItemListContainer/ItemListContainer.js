@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import ItemDetail from '../ItemDetail/ItemDetail';
-import Cats from '../Cats/Cats';
-import Dogs from '../Dogs/Dogs';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
-import { Button } from 'bootstrap';
+import cartContext, {CartContextProvider} from '../../cartContext/cartContext';
+
 
 const ItemListContainer = () => {
 
@@ -42,8 +40,11 @@ const ItemListContainer = () => {
   console.log("Pets Array: ", pets);
   console.log("Pet Categories:", categories);
 
+  console.log(cartContext);
+
   return (
     <div>  
+      
       <h1>Nuestros rescatados</h1> 
       <h5>Ver por...</h5>
       <div className="button-filters">
@@ -54,8 +55,7 @@ const ItemListContainer = () => {
         </NavLink>
 
         {categories.map((catg)=> {
-              return <NavLink name={catg.name} 
-              idCategory={catg.idCategory} 
+              return <NavLink name={catg.name}
               to={"/category/" + catg.idCategory} 
               className={({isActive}) =>
               isActive ? "btn btn-primary btn-active" : "btn btn-primary"}> {catg.name} 
@@ -72,7 +72,9 @@ const ItemListContainer = () => {
         <ItemList pets={pets} key={pets}/> 
       </div>
       )}
+      
     </div>
+    
   )
 };
 

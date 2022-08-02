@@ -8,13 +8,15 @@ import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';import {createContext} from 'react';
+import cartContext, {CartContextProvider} from './cartContext/cartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <div>
   <BrowserRouter>
     <Routes>
-      <Route path="/" exact element={<App/>}>
+      <Route path="/" exact element={<cartContext><App/></cartContext>}>
         <Route index path="/"  element={<ItemListContainer/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path="category" element={<ItemListContainer/>}/>
@@ -24,7 +26,8 @@ root.render(
         <Route path="*" element={<div>Ups! No encontramos esa URL.</div>}/>
       </Route>
     </Routes>
-  </BrowserRouter>
+  </BrowserRouter>  
+  </div>
 );
 // We have to configure the routes here
 
