@@ -18,14 +18,16 @@ const ItemCount = ({stock, initial, donation, onAdd }) => {
         <button className="btn btn-secondary" onClick={increase} > + </button>
         <div className="mt-2">
           <button className="btn btn-primary"
-        onClick={() => {
-          if (count <= stock) {
-            let donation = count;
-            onAdd(count);
-            return donation;
-          }
-        }}
-        > Apadrinar mascota  </button>
+          onClick={() => {
+            if (count <= stock) {
+              let donation = count;
+              onAdd(count);
+              return donation;
+              }
+            }}
+            > 
+            Confirmar monto  
+            </button>
         </div>
     </div>
   )

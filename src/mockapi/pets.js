@@ -25,7 +25,7 @@ const pets = [
         "type": "dog",
         "age": 1,
         "time": "años",
-        "description": "Soy muy amoroso y cariñoso, me encanta la compañía y jugar. Disfruto mucho de pasear así que es importante. Me gustaría que mi casita tenga otros perritos.",
+        "description": "Soy muy amoroso y cariñoso, me encanta la compañía y jugar. Disfruto mucho de pasear y me gustaría que mi casita tenga otros perritos.",
         "pictureUrl": `${process.env.PUBLIC_URL}/assets/Diggle.jpeg`
     },
     {

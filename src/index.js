@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useContext }  from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -8,15 +8,15 @@ import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';import {createContext} from 'react';
-import cartContext, {CartContextProvider} from './cartContext/cartContext';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {CartContext, CartContextProvider} from './CartContext/CartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
   <BrowserRouter>
     <Routes>
-      <Route path="/" exact element={<cartContext><App/></cartContext>}>
+      <Route path="/" exact element={<CartContextProvider><App/></CartContextProvider>}>
         <Route index path="/"  element={<ItemListContainer/>}/>
         <Route path="contact" element={<Contact/>}/>
         <Route path="category" element={<ItemListContainer/>}/>

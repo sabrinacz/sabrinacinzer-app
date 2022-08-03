@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { CartContext } from '../../CartContext/CartContext';
 
 const ItemDetail = ({returnedPet, idPet}) => {
+  const {addToCart} = useContext(CartContext);
+
   const { id, name, type, age, time, description, pictureUrl } = returnedPet;
 
   const [donation, setDonation] = useState();
@@ -52,13 +55,15 @@ const ItemDetail = ({returnedPet, idPet}) => {
             </div>
               :
             <div>
-              <p><strong>Seleccionaste un monto de ${donation} para apadrinar a {name}</strong></p>
+              <p><strong>¿Estás seguro/a que querés donar un monto de ${donation} para apadrinar a {name}?</strong></p>
               <Link to={``}
                 className="mt-2 btn btn-secondary"
-                onClick={()=>RemoveDonation(donation)}>Deshacer
+                onClick={()=>RemoveDonation(donation)}>Volver atrás
               </Link>
-              <Link to={`/Cart`}
-                className="mt-2 btn btn-primary">Ir a pagar
+              <Link to={``} 
+                className="mt-2 btn btn-primary"
+                onClick={addToCart}>
+                  Añadir donación
               </Link>
             </div>
             }

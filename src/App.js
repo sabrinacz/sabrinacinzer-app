@@ -4,8 +4,12 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import './App.css';
 import "./styles.css";
+import {CartContext, CartContextProvider} from './CartContext/CartContext';
 
 function App() {
+  // Receiving context using deconstruction
+  const {cartCount} = useContext(CartContext);
+  console.log('context is', cartCount)
 
   // LOADING APP EMULADO 
   const [loading, setLoading] = useState(true); 
@@ -20,9 +24,10 @@ function App() {
   return (
     <div className="App">
       <div>
-      <NavBar />
+        
+      <NavBar/>
       <Outlet/>
-      <Footer />
+      <Footer/>
       </div>
     </div>
   );

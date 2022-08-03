@@ -3,21 +3,23 @@ import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
-import cartContext, {CartContextProvider} from '../../cartContext/cartContext';
+import {CartContext, CartContextProvider} from '../../CartContext/CartContext';
 
 
 const ItemListContainer = () => {
 
   const params = useParams();
-  console.log("Los params son", params);
+
+  // console.log("Los params son", params);
+
   let idCategory = params.idCategory;
 
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [categories, setCategory] = useState([
-    { "name": "Gatos", "idCategory": "cat" },
-    { "name": "Perros", "idCategory": "dog" }
+    { "name": "Gatos", "i": 1, "idCategory": "cat" },
+    { "name": "Perros", "i": 2, "idCategory": "dog" }
   ]);
 
   // Promise 
@@ -37,10 +39,7 @@ const ItemListContainer = () => {
     }, 
   [idCategory]);
 
-  console.log("Pets Array: ", pets);
-  console.log("Pet Categories:", categories);
-
-  console.log(cartContext);
+  console.log('inside itemlist', CartContext);
 
   return (
     <div>  
@@ -56,6 +55,7 @@ const ItemListContainer = () => {
 
         {categories.map((catg)=> {
               return <NavLink name={catg.name}
+              key={catg.i}
               to={"/category/" + catg.idCategory} 
               className={({isActive}) =>
               isActive ? "btn btn-primary btn-active" : "btn btn-primary"}> {catg.name} 

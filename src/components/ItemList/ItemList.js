@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import Item from '../Item/Item';
 
 const ItemList = ({pets}) => {
@@ -7,8 +7,13 @@ const ItemList = ({pets}) => {
 //Maps the resulting array
 function mapResultingArray(array) {
   return array.map((pet,id)=> {
-    return <Item 
+    return (
+    <Link to={`/pet/${pet.id}`} className="text-decoration-none text-black">
+    <Item 
     pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>;
+    </Link>
+    )
+
     });
 };
 
@@ -19,7 +24,9 @@ function mapResultingArray(array) {
               return <Item 
               pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
              })}  */}
-             {mapResultingArray(pets)}<Outlet/>
+             
+              {mapResultingArray(pets)}
+             
       </div>
     </div>
   )

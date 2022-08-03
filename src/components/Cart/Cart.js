@@ -1,12 +1,12 @@
 import React, {useContext, useEffect} from 'react';
-import cartContext from '../../cartContext/cartContext';
+import {CartContext, CartContextProvider} from '../../CartContext/CartContext';
 
 const Cart = () => {
   
-  const AllContextValue = useContext(cartContext);
+  const {cartCount} = useContext(CartContext);
 
   return (
-    <h1>Cart</h1>
+    <h1>{cartCount} donaciones añadidas</h1>
   )
 }
 
