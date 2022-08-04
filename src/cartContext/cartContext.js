@@ -4,34 +4,28 @@ import {createContext, useContext, useState} from 'react';
 let CartArray = [];
 
 export const CartContext =  createContext();
+export const CartError = `¡Esta mascota ya está añadida! Actualizamos tu donación. Revisá el carrito.`;
 
 export const CartContextProvider = ({children, defaultValue}) => { 
   let prevValue = 0;
   const [cart, setCart] = useState();
   const [cartCount, setCartCount] = useState(0);
   const [TotalDonation, setTotalDonation] = useState(prevValue);
-  let CartError = "Esta mascota ya fue añadida. Revisá el carrito.";
-
 
   console.log('donation is', TotalDonation);
 
-  const addToCart = (returnedPet, donation) => {
-    
-    const changeDonation = () => {
-      setTotalDonation((prevValue) => (prevValue + returnedPet.petDonation));
+  const addToCart = (returnedPet) => {
+    const changeDonation = (prevValue) => {
+      (prevValue =! returnedPet.petDonation ? prevValue = returnedPet.petDonation : returnedPet.petDonation );
     } 
-
     console.log('indexof is', CartArray.indexOf(returnedPet));
     if(CartArray.indexOf(returnedPet) === -1) {
-      CartArray.push(returnedPet); 
       changeDonation();
+      CartArray.push(returnedPet); 
     } else {
-      alert(CartError);
-    }
-
+      changeDonation();
+    } 
     setCartCount(CartArray.length);
-    return TotalDonation;
-   
   }
 
   const removeFromCart = (item) => {
@@ -41,7 +35,7 @@ export const CartContextProvider = ({children, defaultValue}) => {
   }
 
   return (
-  <CartContext.Provider value={{cart,cartCount,CartArray,TotalDonation,addToCart,removeFromCart}}>
+  <CartContext.Provider value={{cart,cartCount,CartArray,TotalDonation,CartError,addToCart,removeFromCart}}>
    {/* value is an object that exports two properties, an array and a method*/}
    {children}
   </CartContext.Provider>

@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CartContext } from '../../CartContext/CartContext';
 
-const ItemDetail = ({returnedPet, idPet}) => {
-  const {addToCart} = useContext(CartContext);
-
+const ItemDetail = ({returnedPet}) => {
+  const {addToCart, CartError, CartArray} = useContext(CartContext);
   let { id, name, type, age, time, description, pictureUrl, petDonation } = returnedPet;
 
   const [donation, setDonation] = useState();
   const [sponsor, setSponsor] = useState(false);
-
+  const [petAdded, setPetAdded] = useState(false);
 
   const ConfirmDonation = (donation) => {
     setDonation(donation);  
@@ -21,18 +20,20 @@ const ItemDetail = ({returnedPet, idPet}) => {
 
   const RemoveDonation = (donation) => {
     setSponsor(false);
-    console.log(`Donación de $${donation} eliminada`)
   }
 
+  console.log(CartArray, 'and', returnedPet);
+
+  let checkPet = () => {
+   if (CartArray.includes(returnedPet)) { 
+    setPetAdded(true);
+  }}
 
   return (
     <div className="item-detail-container container">
       <div className="column">
         <h1>Hola, soy {name}</h1>
-        {/* {pet.map((pet,id)=> {
-                return <Item 
-                pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
-        })}   */}
+  
         <div className="item-detail row">
           <div className="col col-lg-5 picture-container">
             <img src={pictureUrl} alt="{name}"/>
@@ -47,24 +48,41 @@ const ItemDetail = ({returnedPet, idPet}) => {
             ?
             <div>
             <p><strong>Seleccioná un monto y apadriná a {name}</strong><br/>(Entre $100 y $1000)</p>
-            <ItemCount stock={1000} initial={100} onAdd={ConfirmDonation} />      
+            <ItemCount stock={1000} initial={100} onAdd={ConfirmDonation} checkPet={checkPet}/>      
             </div>
               :
             <div>
-              <p><strong>¿Estás seguro/a que querés donar un monto de ${petDonation} para apadrinar a {name}?</strong></p>
+              <p className='text-success'><strong>Elegiste un monto de ${petDonation} para apadrinar a {name}</strong></p>
+              <div id="addtocart-section"> 
               <Link to={``}
                 className="mt-2 btn btn-secondary"
                 onClick={()=>RemoveDonation(donation)}>Volver atrás
               </Link>
+              {petAdded ? 
+               <Link to={``} 
+               className='mt-2 btn btn-primary disabled'>
+                 Añadir donación
+                </Link>
+              : 
               <Link to={``} 
-                className="mt-2 btn btn-primary"
-                onClick={(e)=> {
-                  e.preventDefault();
-                  addToCart(returnedPet)
-                  }
-                  }>
-                  Añadir donación
-              </Link>
+                    className='mt-2 btn btn-primary'
+                    onClick={(e)=> {
+                    e.preventDefault();
+                    addToCart(returnedPet)
+                    }
+                    }>
+                    Añadir donación
+                    </Link>
+              }
+
+              <p id="ifPetAdded">
+              {petAdded ? 
+              <p className="error-message">{CartError}</p>
+              : 
+              <p></p>
+               }
+              </p>
+              </div>
             </div>
             }
           </div>

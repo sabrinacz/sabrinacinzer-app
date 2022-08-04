@@ -1,5 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import { CartArray, CartContext, CartContextProvider } from '../../CartContext/CartContext';
+import { Link } from 'react-router-dom';
+
 
 const CartContainer = ({items}) => {
     const {removeFromCart} = useContext(CartContext);
@@ -9,10 +11,17 @@ const CartContainer = ({items}) => {
     {items.map((item, i)=> 
     (
     <div className="cart-card item-detail row">
-        <h3 className="col-2">{item.name}</h3>
-        <div className="col picture-container">
+        
+        <h3 className="col-2">
+            <Link to={`/pet/${item.id}`} className="text-decoration-none text-black">{item.name} </Link>
+       </h3>
+
+        <Link to={`/pet/${item.id}`} className="col text-decoration-none text-black">
+        <div className="picture-container">
             <img src={item.pictureUrl} alt="{name}"/>
         </div>
+        </Link>
+
         <div className="col text-md-end donationamount">
             ${item.petDonation}
             <button 
