@@ -32,8 +32,6 @@ const ItemDetailContainer = () => {
 
   let returnedPet = (getPet(selectPets, idPet));
 
-  console.log("Returned pet is", returnedPet, "with id", idPet );
-
   return (
     <div>
         <NavLink to={"/category/"}

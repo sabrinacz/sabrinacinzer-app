@@ -26,7 +26,7 @@ h3 {
     font-size: 1.5rem;
 }
 
-.pet_card {
+.pet-card {
     max-width: 300px;
     padding: 1rem;
     margin: 1rem;
@@ -101,4 +101,19 @@ h3 {
     display: flex;
     min-height: 300px;
     background-color: var(--gray10);
+}
+
+.cart-card {
+    max-height: 200px;
+    background-color: #f2f3f4;
+    border: 1px solid var(--gray10);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    padding:10px;
+    margin:10px;
+}
+.cart-card .picture-container {
+    max-width: 200px;
 }

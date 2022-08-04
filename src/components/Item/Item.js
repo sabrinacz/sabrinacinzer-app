@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Item = ({ pet }) => {
   const { id, name, type, age, time, description, pictureUrl } = pet;
   return (
-    <div className="pet_card">
+    <div className="pet-card">
         <div className="picture-container">
           <img src={pictureUrl} alt="{name}"/>
         </div>

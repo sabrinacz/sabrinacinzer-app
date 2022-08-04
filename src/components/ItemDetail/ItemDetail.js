@@ -7,20 +7,16 @@ import { CartContext } from '../../CartContext/CartContext';
 const ItemDetail = ({returnedPet, idPet}) => {
   const {addToCart} = useContext(CartContext);
 
-  const { id, name, type, age, time, description, pictureUrl } = returnedPet;
+  let { id, name, type, age, time, description, pictureUrl, petDonation } = returnedPet;
 
   const [donation, setDonation] = useState();
   const [sponsor, setSponsor] = useState(false);
 
-  function AddFavorite(e) {
-    //recibe por parametro a ItemCount
-    alert(`Agregaste a favoritos`);
-  }
 
-  const AddDonation = (donation) => {
-    setDonation(donation);
+  const ConfirmDonation = (donation) => {
+    setDonation(donation);  
     setSponsor(true);
-    return donation;
+    return returnedPet.petDonation = donation;
   }
 
   const RemoveDonation = (donation) => {
@@ -51,18 +47,22 @@ const ItemDetail = ({returnedPet, idPet}) => {
             ?
             <div>
             <p><strong>Seleccioná un monto y apadriná a {name}</strong><br/>(Entre $100 y $1000)</p>
-            <ItemCount stock={1000} initial={100} onAdd={AddDonation} />      
+            <ItemCount stock={1000} initial={100} onAdd={ConfirmDonation} />      
             </div>
               :
             <div>
-              <p><strong>¿Estás seguro/a que querés donar un monto de ${donation} para apadrinar a {name}?</strong></p>
+              <p><strong>¿Estás seguro/a que querés donar un monto de ${petDonation} para apadrinar a {name}?</strong></p>
               <Link to={``}
                 className="mt-2 btn btn-secondary"
                 onClick={()=>RemoveDonation(donation)}>Volver atrás
               </Link>
               <Link to={``} 
                 className="mt-2 btn btn-primary"
-                onClick={addToCart}>
+                onClick={(e)=> {
+                  e.preventDefault();
+                  addToCart(returnedPet)
+                  }
+                  }>
                   Añadir donación
               </Link>
             </div>

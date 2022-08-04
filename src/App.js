@@ -9,7 +9,6 @@ import {CartContext, CartContextProvider} from './CartContext/CartContext';
 function App() {
   // Receiving context using deconstruction
   const {cartCount} = useContext(CartContext);
-  console.log('context is', cartCount)
 
   // LOADING APP EMULADO 
   const [loading, setLoading] = useState(true); 
