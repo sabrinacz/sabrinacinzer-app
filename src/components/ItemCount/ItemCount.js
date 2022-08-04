@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 const ItemCount = ({stock, initial, donation, onAdd, checkPet }) => {
-  
+
     const [count, setCount] = useState(initial);
 
     const increase = () => {
@@ -27,7 +27,7 @@ const ItemCount = ({stock, initial, donation, onAdd, checkPet }) => {
               }
             }}
             > 
-            Confirmar mascota  
+            Confirmar monto  
             </button>
         </div>
     </div>

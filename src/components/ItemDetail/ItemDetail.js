@@ -59,10 +59,11 @@ const ItemDetail = ({returnedPet}) => {
                 onClick={()=>RemoveDonation(donation)}>Volver atrás
               </Link>
               {petAdded ? 
-               <Link to={``} 
+               <span className='cursor-not-allowed'>
+                <Link to={``} 
                className='mt-2 btn btn-primary disabled'>
                  Añadir donación
-                </Link>
+                </Link></span>
               : 
               <Link to={``} 
                     className='mt-2 btn btn-primary'
