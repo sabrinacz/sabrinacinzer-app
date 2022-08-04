@@ -9,7 +9,6 @@ const ItemDetailContainer = () => {
 
   const {id} = useParams();
   let idPet = id;
-  console.log("The selected id is", idPet);
 
   const [selectPets, setselectPets] = useState([]);
   const [loading, setLoading] = useState(true);

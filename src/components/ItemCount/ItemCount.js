@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
-const ItemCount = ({stock, initial, donation, onAdd, checkPet }) => {
+const ItemCount = ({stock, initial, petDonation, onAdd, checkPet, 
+  calculateTotalDonation }) => {
 
     const [count, setCount] = useState(initial);
 

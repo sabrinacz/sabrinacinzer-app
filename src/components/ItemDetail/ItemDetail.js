@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { CartContext } from '../../CartContext/CartContext';
 
 const ItemDetail = ({returnedPet}) => {
-  const {addToCart, CartError, CartArray} = useContext(CartContext);
+  const { addToCart, CartError, CartArray, TotalDonation, calculateTotalDonation } = useContext(CartContext);
   let { id, name, type, age, time, description, pictureUrl, petDonation } = returnedPet;
 
   const [donation, setDonation] = useState();
@@ -21,8 +21,6 @@ const ItemDetail = ({returnedPet}) => {
   const RemoveDonation = (donation) => {
     setSponsor(false);
   }
-
-  console.log(CartArray, 'and', returnedPet);
 
   let checkPet = () => {
    if (CartArray.includes(returnedPet)) { 
@@ -69,7 +67,7 @@ const ItemDetail = ({returnedPet}) => {
                     className='mt-2 btn btn-primary'
                     onClick={(e)=> {
                     e.preventDefault();
-                    addToCart(returnedPet)
+                    addToCart(returnedPet);
                     }
                     }>
                     Añadir donación

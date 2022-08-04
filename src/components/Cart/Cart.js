@@ -5,7 +5,9 @@ import { useParams, NavLink } from 'react-router-dom';
 
 const Cart = () => {
   
-  const {cart,cartCount,CartArray,donation,TotalDonation} = useContext(CartContext);
+  const {cart,cartCount,CartArray,donation,TotalDonation,calculateTotalDonation} = useContext(CartContext);
+
+  calculateTotalDonation();
 
   return (
     <div className='container'>
