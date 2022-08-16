@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import './App.css';
 import "./styles.css";
-import {CartContext, CartContextProvider} from './CartContext/CartContext';
+import {CartContext, CartContextProvider} from './cartContext/cartContext';
 
 function App() {
   // Receiving context using deconstruction

@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import { CartContext } from '../../CartContext/CartContext';
+import { CartContext } from '../../cartContext/cartContext';
 
 export const FavWidget = () => {
 
@@ -7,7 +7,7 @@ export const FavWidget = () => {
 
   return (
     <button className="btn btn-outline-success ms-auto">
-    {cartCount}
+    {cartCount > 0 ? cartCount : ''}
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"

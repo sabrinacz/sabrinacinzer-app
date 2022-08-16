@@ -39,6 +39,7 @@ export const CartContextProvider = ({children, defaultValue}) => {
     let index = CartArray.indexOf(item);
     console.log('indexof is', index);
     CartArray.splice(index,1)//remove item
+    setCartCount(CartArray.length);
   }
 
 //Return cart

@@ -9,7 +9,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {CartContext, CartContextProvider} from './CartContext/CartContext';
+import {CartContext, CartContextProvider} from './cartContext/cartContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

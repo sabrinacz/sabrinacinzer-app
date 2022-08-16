@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { CartContext } from '../../CartContext/CartContext';
+import { CartContext } from '../../cartContext/cartContext';
 
 const ItemDetail = ({returnedPet}) => {
   const { addToCart, CartError, CartArray, TotalDonation, calculateTotalDonation } = useContext(CartContext);

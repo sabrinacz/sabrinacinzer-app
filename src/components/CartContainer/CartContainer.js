@@ -1,5 +1,5 @@
 import React, {useContext, useEffect} from 'react';
-import { CartArray, CartContext, CartContextProvider } from '../../CartContext/CartContext';
+import { CartArray, CartContext, CartContextProvider } from '../../cartContext/cartContext';
 import { Link } from 'react-router-dom';
 
 

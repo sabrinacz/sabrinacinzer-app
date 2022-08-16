@@ -3,7 +3,7 @@ import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
-import {CartContext, CartContextProvider} from '../../CartContext/CartContext';
+import {CartContext, CartContextProvider} from '../../cartContext/cartContext';
 
 
 const ItemListContainer = () => {
