@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {CartContext, CartContextProvider} from './cartContext/cartContext';
+import './firebase.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

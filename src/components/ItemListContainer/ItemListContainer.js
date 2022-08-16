@@ -39,7 +39,6 @@ const ItemListContainer = () => {
     }, 
   [idCategory]);
 
-  console.log('inside itemlist', CartContext);
 
   return (
     <div>  
