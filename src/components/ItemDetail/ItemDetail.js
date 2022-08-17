@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CartContext } from '../../cartContext/cartContext';
 
-const ItemDetail = ({returnedPet}) => {
+const ItemDetail = ({selectedPet, idPet}) => {
   const { addToCart, CartError, CartArray, TotalDonation, calculateTotalDonation } = useContext(CartContext);
-  let { id, name, type, age, time, description, pictureUrl, petDonation } = returnedPet;
+  
+  // Defining selectedPet
+  let { id, name, type, age, time, description, pictureUrl, petDonation } = selectedPet;
+  id = idPet;
 
   const [donation, setDonation] = useState();
   const [sponsor, setSponsor] = useState(false);
@@ -15,7 +18,7 @@ const ItemDetail = ({returnedPet}) => {
   const ConfirmDonation = (donation) => {
     setDonation(donation);  
     setSponsor(true);
-    return returnedPet.petDonation = donation;
+    return selectedPet.petDonation = donation;
   }
 
   const RemoveDonation = (donation) => {
@@ -23,7 +26,7 @@ const ItemDetail = ({returnedPet}) => {
   }
 
   let checkPet = () => {
-   if (CartArray.includes(returnedPet)) { 
+   if (CartArray.includes(selectedPet)) { 
     setPetAdded(true);
   }}
 
@@ -67,7 +70,7 @@ const ItemDetail = ({returnedPet}) => {
                     className='mt-2 btn btn-primary'
                     onClick={(e)=> {
                     e.preventDefault();
-                    addToCart(returnedPet);
+                    addToCart(selectedPet,idPet);
                     }
                     }>
                     Añadir donación

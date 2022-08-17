@@ -1,10 +1,12 @@
 import React, {useContext, useEffect} from 'react';
-import { CartArray, CartContext, CartContextProvider } from '../../cartContext/cartContext';
+import { CartContext } from '../../cartContext/cartContext';
 import { Link } from 'react-router-dom';
 
 
 const CartContainer = ({items}) => {
     const {removeFromCart} = useContext(CartContext);
+    items.map((item, i)=> 
+    console.log(item.name, 'with id', item.id, item))
 
   return (
     <div className="cart">

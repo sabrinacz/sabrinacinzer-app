@@ -6,36 +6,36 @@ export const CartContext =  createContext();
 export const CartError = `¡Esta mascota ya está añadida! Actualizamos tu donación. Revisá el carrito.`;
 
 // Inside CartContextProvider
-export const CartContextProvider = ({children, defaultValue}) => { 
+export const CartContextProvider = ({children}) => { 
 
   //on update pets, set the state
   const [pets, setPets] = useState([]);
   useEffect(() => {
     setPets(pets);
   }, [pets])
+
+
   //CartArray is an array with my items added to cart
-  let CartArray = [];
-
-
   const [cart, setCart] = useState();
+  const [CartArray, setCartArray] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [TotalDonation, setTotalDonation] = useState();
  
   // Calculate the sum of all donations
   const calculateTotalDonation = () => {
     setTotalDonation(CartArray.reduce((n, {petDonation})=> n + petDonation,0 ));
-    console.log('cart',CartArray);
-    console.log('donationnn is', (CartArray.reduce((n, {petDonation})=> n + petDonation,0 )));
   }   
   
-  // When adding to cart, change donation value. If pet is not already in cart push to CartArray and change donation, else, only change donation.
-  const addToCart = (returnedPet) => {
+  // When adding to cart, change donation value. 
+  // If pet is not already in cart push to CartArray and change donation, else, only change donation.
+  const addToCart = (selectedPet,idPet) => {
     const changeDonation = (prevValue) => {
-      (prevValue =! returnedPet.petDonation ? prevValue = returnedPet.petDonation : returnedPet.petDonation );
+      (prevValue =! selectedPet.petDonation ? prevValue = selectedPet.petDonation : selectedPet.petDonation );
     } 
-    if(CartArray.indexOf(returnedPet) === -1) {
+    if(CartArray.indexOf(selectedPet) === -1) {
       changeDonation();
-      CartArray.push(returnedPet); 
+      selectedPet.id = idPet;
+      CartArray.push(selectedPet); 
     } else {
       changeDonation();
     } 

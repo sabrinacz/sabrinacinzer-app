@@ -30,8 +30,8 @@ const Cart = () => {
 
   
     <h3 className='mt-5'>{cartCount} donaciones añadidas</h3>
-    
-    <CartContainer items={CartArray} key={CartArray.i}/>
+     
+    <CartContainer items={CartArray}/> 
     <h1 className='text-right'>Total: ${TotalDonation}</h1>
     
     </div>

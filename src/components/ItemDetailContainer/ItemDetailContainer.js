@@ -12,33 +12,18 @@ const ItemDetailContainer = () => {
   const {id} = useParams();
   let idPet = id;
 
-  const [selectPets, setselectPets] = useState([]);
+  const [selectedPet, setselectedPet] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // // Promise 
-  // useEffect(() => {
-  //     if(idPet) {
-  //     getData
-  //     .then((data) => {setselectPets(data)})
-  //     .catch((err) => {console.log(err);})
-  //     .finally(() => {setLoading(false);});
-  //     };
-  //   },[idPet]);
 
   useEffect(() => {
     if(idPet) {
       getItemsbyId(idPet).then((snapshot) => {
-        console.log(snapshot.data());
-        setselectPets(snapshot.data());
+        idPet = snapshot.id;
+        setselectedPet(snapshot.data());
      })
     .finally(() => {setLoading(false);});
     };
   }, [idPet]);
-
-
-  let returnedPet = selectPets;
-  console.log('selectPets', selectPets)
-  console.log('returnedPet', returnedPet)
 
   return (
     <div>
@@ -53,7 +38,7 @@ const ItemDetailContainer = () => {
       </div>
       ) : (
       <div>
-        <ItemDetail returnedPet={returnedPet} idPet={idPet}/> 
+        <ItemDetail selectedPet={selectedPet} idPet={idPet}/> 
       </div>
       )}
       
