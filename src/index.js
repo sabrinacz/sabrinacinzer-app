@@ -1,4 +1,4 @@
-import React, { createContext, useContext }  from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -9,8 +9,8 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {CartContext, CartContextProvider} from './cartContext/cartContext';
-import './firebase.js';
+import {CartContextProvider} from './cartContext/cartContext';
+import {getItems} from './firebase.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

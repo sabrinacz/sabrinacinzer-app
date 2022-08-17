@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import './App.css';
 import "./styles.css";
 import {CartContext, CartContextProvider} from './cartContext/cartContext';
+import {getItems} from './firebase.js';
 
 function App() {
   // Receiving context using deconstruction
@@ -14,10 +15,17 @@ function App() {
   const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
+    getItems().then((snapshot) => {
+      console.log(
+            snapshot.docs.map((doc)=> ({
+                id: doc.id, 
+                ...doc.data(),
+            }))
+        );
+    });
     setTimeout(() => {
       setLoading(false); 
     }, 100);
-    console.log('useEffect');
   }, []);
 
   return (

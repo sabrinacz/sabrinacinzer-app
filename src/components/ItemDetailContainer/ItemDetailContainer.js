@@ -3,6 +3,8 @@ import { useParams, NavLink } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import getData from '../../mockapi/pets';
 import "../../styles.css";
+import { db, getItemsbyId} from '../../firebase.js';
+import { collection, getDocs, doc, getDoc, getFirestore, query, where } from 'firebase/firestore';
 
 
 const ItemDetailContainer = () => {
@@ -13,23 +15,30 @@ const ItemDetailContainer = () => {
   const [selectPets, setselectPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Promise 
+  // // Promise 
+  // useEffect(() => {
+  //     if(idPet) {
+  //     getData
+  //     .then((data) => {setselectPets(data)})
+  //     .catch((err) => {console.log(err);})
+  //     .finally(() => {setLoading(false);});
+  //     };
+  //   },[idPet]);
+
   useEffect(() => {
-      if(idPet) {
-      getData
-      .then((data) => {setselectPets(data)})
-      .catch((err) => {console.log(err);})
-      .finally(() => {setLoading(false);});
-      };
-    },[idPet]);
+    if(idPet) {
+      getItemsbyId(idPet).then((snapshot) => {
+        console.log(snapshot.data());
+        setselectPets(snapshot.data());
+     })
+    .finally(() => {setLoading(false);});
+    };
+  }, [idPet]);
 
-  function getPet (pets, idPet) {
-    pets.filter( pets => pets.id === idPet);
-    let pet = pets[idPet-1]
-    return pet;
-  }
 
-  let returnedPet = (getPet(selectPets, idPet));
+  let returnedPet = selectPets;
+  console.log('selectPets', selectPets)
+  console.log('returnedPet', returnedPet)
 
   return (
     <div>

@@ -10,11 +10,11 @@ function mapResultingArray(array) {
     return (
     <Link to={`/pet/${pet.id}`} className="text-decoration-none text-black">
     <Item 
-    pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>;
+    pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
     </Link>
     )
 
-    });
+    })
 };
 
   return (

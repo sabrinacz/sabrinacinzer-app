@@ -1,7 +1,5 @@
-import {createContext, useContext, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 
-//CartArray is an array with my items added to cart
-let CartArray = [];
 
 export const CartContext =  createContext();
 
@@ -9,6 +7,15 @@ export const CartError = `¡Esta mascota ya está añadida! Actualizamos tu dona
 
 // Inside CartContextProvider
 export const CartContextProvider = ({children, defaultValue}) => { 
+
+  //on update pets, set the state
+  const [pets, setPets] = useState([]);
+  useEffect(() => {
+    setPets(pets);
+  }, [pets])
+  //CartArray is an array with my items added to cart
+  let CartArray = [];
+
 
   const [cart, setCart] = useState();
   const [cartCount, setCartCount] = useState(0);

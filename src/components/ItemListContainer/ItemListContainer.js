@@ -1,16 +1,15 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import getData from '../../mockapi/pets';
 import "../../styles.css";
 import {CartContext, CartContextProvider} from '../../cartContext/cartContext';
+import { db, getItems} from '../../firebase.js';
+import { collection, getDocs, doc, getDoc, getFirestore, query, where } from 'firebase/firestore';
 
 
 const ItemListContainer = () => {
 
   const params = useParams();
-
-  // console.log("Los params son", params);
 
   let idCategory = params.idCategory;
 
@@ -22,24 +21,36 @@ const ItemListContainer = () => {
     { "name": "Perros", "i": 2, "idCategory": "dog" }
   ]);
 
-  // Promise 
+
   useEffect(() => {
     if(!idCategory) {
-      getData
-      .then((data) => {setPets(data);})
-      .catch((err) => {console.log(err);})
-      .finally(() => {setLoading(false);},100);
-      }
-    else if (idCategory){
-      getData
-      .then((data) => {setPets(data.filter( pets => pets.type === idCategory));})
-      .catch((err) => {console.log(err);})
-      .finally(() => {setLoading(false);},100);
-      }
-    }, 
-  [idCategory]);
+      getItems().then((snapshot) => {
+        setPets(
+              snapshot.docs.map((doc)=> ({
+                  ...doc.data(),
+                  id: doc.id, 
+              }))
+          );
+     })
+     .finally(() => {setLoading(false);});
+    }
+     else if (idCategory){
+      const colRef = collection(db, 'pets'); 
+      const filteringtype= query(colRef, where('type', '==', idCategory))
+      getDocs(filteringtype).then((snapshot) => {
+        setPets(
+              snapshot.docs
+              .map((doc)=> ({
+                  ...doc.data(),
+                  id: doc.id,
+              })),
+          );
+     })
+     .finally(() => {setLoading(false);});
+     }
+  }, [idCategory]);
 
-
+  
   return (
     <div>  
       

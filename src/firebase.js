@@ -18,28 +18,24 @@ const firebaseConfig = {
   measurementId: "G-N8PYF6M7ZK"
 };
 
+
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 const analytics = getAnalytics(app);
 
 
-// const docRef = doc(db, "pets", "rb3dM9gQEZzTQSjX4jcy");
+export const db = getFirestore(app);
 
-// getDoc(docRef).then(snapshot => {
-//     console.log({id: snapshot.id,...snapshot.data()});
-// })
-// console.log(db)
 
-const colRef = collection(db, 'pets');
-const q = query();
+export const getItems = () => {
+    const colRef = collection(db, 'pets');  
+    const q = query(colRef, where("name", "!=", ''));
+    return getDocs(q)
+}
 
-getDocs(colRef).then((snapshot) => {
-    console.log(
-        snapshot.docs.map((doc)=> ({
-            id: doc.id, 
-            ...doc.data()
-        }))
-    );
-})
+export const getItemsbyId = (id) => {
+    const docRef = doc(db, 'pets', id);  
+    return getDoc(docRef)
+}
