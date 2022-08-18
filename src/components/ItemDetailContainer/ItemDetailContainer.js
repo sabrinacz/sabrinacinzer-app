@@ -1,12 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import getData from '../../mockapi/pets';
 import "../../styles.css";
 import { CartContext } from '../../cartContext/cartContext';
 import { db, getItemsbyId} from '../../firebase.js';
-import { collection, getDocs, doc, getDoc, getFirestore, query, where } from 'firebase/firestore';
-import Cart from '../Cart/Cart';
 
 
 const ItemDetailContainer = () => {
@@ -25,6 +22,7 @@ const ItemDetailContainer = () => {
         idPet = snapshot.id;
         setselectedPet(snapshot.data());
      })
+     .catch(()=> alert('error'))
     .finally(() => {setLoading(false);});
     };
   }, [idPet]);
@@ -35,7 +33,9 @@ const ItemDetailContainer = () => {
     return selectedPet.petAdded;
    }}
 
-   selectedPet.petAdded = checkPet(CartArray, selectedPet);
+   if(selectedPet){
+    selectedPet.petAdded = checkPet(CartArray, selectedPet);
+  }
 
   return (
     <div>

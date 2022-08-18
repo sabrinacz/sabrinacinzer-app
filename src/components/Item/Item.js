@@ -6,9 +6,11 @@ const Item = ({ pet }) => {
   const { id, name, type, age, time, description, pictureUrl } = pet;
   return (
     <div className="pet-card">
-        <div className="picture-container">
-          <img src={pictureUrl} alt="{name}"/>
+        <Link to={`/pet/${pet.id}`} className="text-decoration-none text-black">
+          <div className="picture-container">
+          <img src={pictureUrl} alt="{name}"/>     
         </div>
+        </Link>
         <h3>{name}</h3>
         <p>{description}</p>
         <p>{age} {time}</p>

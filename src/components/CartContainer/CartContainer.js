@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext } from 'react';
 import { CartContext } from '../../cartContext/cartContext';
 import { Link } from 'react-router-dom';
 
@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 const CartContainer = ({items}) => {
     const {removeFromCart} = useContext(CartContext);
     
-    items.map((item, i)=> 
-    console.log(item, 'with id', item.id, item.petAdded, item.petDonation))
-
   return (
     <div className="cart">
     {items.map((item, i)=> 

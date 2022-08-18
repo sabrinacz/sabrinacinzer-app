@@ -3,10 +3,9 @@ import ItemCount from '../ItemCount/ItemCount';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { CartContext } from '../../cartContext/cartContext';
-import Cart from '../Cart/Cart';
 
 const ItemDetail = ({selectedPet, idPet}) => {
-  const { addToCart, CartArray } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
   
   // Defining selectedPet
   let { id, name, type, age, time, description, pictureUrl, petDonation, petAdded } = selectedPet;
@@ -54,20 +53,20 @@ const ItemDetail = ({selectedPet, idPet}) => {
             <div>
               <p className='text'><strong>Elegiste ${donation} para {name}</strong></p>
 
-              <p id="ifPetAdded">
-              {  selectedPet.petAdded == true ? 
+              <div id="ifPetAdded">
+              {  selectedPet.petAdded === true ? 
               <div className="message alert-success">¡Gracias! Esta donación está en el carrito. <Link to="/cart">Revisá el carrito.</Link></div>
               : 
               <p></p>
                }
-              </p>
+              </div>
 
               <div id="addtocart-section"> 
               <Link to={``}
                 className="mt-2 btn btn-secondary"
                 onClick={()=>RemoveDonation(donation)}>Volver atrás
               </Link>
-              { selectedPet.petAdded == true ? 
+              { selectedPet.petAdded === true ? 
                <span className='cursor-not-allowed'>
                 <Link to={``} 
                       className='mt-2 btn btn-primary disabled'

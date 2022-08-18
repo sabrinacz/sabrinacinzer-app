@@ -1,17 +1,14 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Item from '../Item/Item';
 
-const ItemList = ({pets}) => {
+const ItemList = ({pets, key}) => {
   
 //Maps the resulting array
 function mapResultingArray(array) {
   return array.map((pet,id)=> {
     return (
-    <Link to={`/pet/${pet.id}`} className="text-decoration-none text-black">
-    <Item 
-    pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id} petAdded={pet.petAdded}/>
-    </Link>
+        <Item key={pet.id} pet={pet} type={pet.type} name={pet.name} id={id} petAdded={pet.petAdded}/>
     )
 
     })

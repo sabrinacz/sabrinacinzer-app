@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
-import { useParams, Link, NavLink, Outlet } from 'react-router-dom';
+import React, {useState, useEffect } from 'react';
+import { useParams, NavLink } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
 import "../../styles.css";
-import {CartContext, CartContextProvider} from '../../cartContext/cartContext';
 import { db, getItems} from '../../firebase.js';
-import { collection, getDocs, doc, getDoc, getFirestore, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
 
 const ItemListContainer = () => {

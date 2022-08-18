@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect, useState} from 'react';
+import {createContext, useEffect, useState} from 'react';
 
 
 export const CartContext =  createContext();
@@ -59,8 +59,10 @@ export const CartContextProvider = ({children}) => {
 
   const updateDonation = (selectedPet,idPet,count) => {
     let petFoundInArray = CartArray.find(x => x.id === idPet);
-    petFoundInArray.petDonation = count;
-    console.log(petFoundInArray, petFoundInArray.petDonation, count)
+    if (petFoundInArray != '') {
+      petFoundInArray.petDonation = count;
+      console.log(petFoundInArray, petFoundInArray.petDonation, count)
+    }
   }
 
 //Return cart

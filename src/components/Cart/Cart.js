@@ -1,7 +1,7 @@
-import React, {useState, useContext, useEffect} from 'react';
-import { cartCount, cart, CartArray, CartContext, CartContextProvider } from '../../cartContext/cartContext';
+import React, { useContext } from 'react';
+import { CartContext } from '../../cartContext/cartContext';
 import CartContainer from '../CartContainer/CartContainer';
-import { useParams, NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const Cart = () => {
   
@@ -16,7 +16,7 @@ const Cart = () => {
               className={"breadcrumb-link"}>
               Volver a todos los rescatados
       </NavLink>
-      <h3 className='mt-5'>No hay items en el carrito</h3>
+      <h3 className='mt-5'>No hay donaciones en el carrito</h3>
       </div>
     )
   }
@@ -33,6 +33,7 @@ const Cart = () => {
      
     <CartContainer items={CartArray} key={CartArray.id}/> 
     <h1 className='text-right'>Total: ${TotalDonation}</h1>
+    <Link to={''} className="btn btn-primary">Pagar</Link>
     
     </div>
   )
