@@ -119,14 +119,16 @@ h3 {
     max-width: 200px;
 }
 
-.error-message {
+.message {
     font-size: 0.85rem;
     line-height: 110%;
     margin:10px 0px;
-    border: 1px solid #b2b2b2;
     padding: 16px;
-    background-color:#f3f3f3;
     border-radius: 10px;
+}
+.message a {
+    font-size: 0.85rem;
+    line-height: 110%;
 }
 
 .btn-primary.disabled {

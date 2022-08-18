@@ -10,7 +10,7 @@ function mapResultingArray(array) {
     return (
     <Link to={`/pet/${pet.id}`} className="text-decoration-none text-black">
     <Item 
-    pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
+    pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id} petAdded={pet.petAdded}/>
     </Link>
     )
 
@@ -20,10 +20,6 @@ function mapResultingArray(array) {
   return (
     <div>
       <div className="item-list-container">
-            {/* {pets.map((pet,id)=> {
-              return <Item 
-              pet={pet} key={pet.id} type={pet.type} name={pet.name} id={id}/>
-             })}  */}
              
               {mapResultingArray(pets)}
              

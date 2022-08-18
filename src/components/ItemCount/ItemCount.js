@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect} from 'react';
+import { CartContext } from '../../cartContext/cartContext';
 
-const ItemCount = ({stock, initial, petDonation, onAdd, checkPet, 
-  calculateTotalDonation }) => {
+const ItemCount = ({selectedPet, idPet, stock, initial, onAdd }) => {
+   const { updateDonation } = useContext(CartContext);
 
     const [count, setCount] = useState(initial);
-
+    useEffect(() => {
+      setCount(count);
+    }, [count])
+  
     const increase = () => {
       setCount((prevValue) => (prevValue < 1000 ? count + 50 : count));
     } 
@@ -19,13 +23,12 @@ const ItemCount = ({stock, initial, petDonation, onAdd, checkPet,
         <button className="btn btn-secondary" onClick={increase} > + </button>
         <div className="mt-2">
           <button className="btn btn-primary"
-          onClick={() => {
-            checkPet();
+          onClick={(e, selectedPet) => {
+            e.preventDefault();
             if (count <= stock) {
-              let donation = count;
               onAdd(count);
-              return donation;
-              }
+            }
+            updateDonation(selectedPet,idPet,count)
             }}
             > 
             Confirmar monto  

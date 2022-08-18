@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 
 const CartContainer = ({items}) => {
     const {removeFromCart} = useContext(CartContext);
+    
     items.map((item, i)=> 
-    console.log(item.name, 'with id', item.id, item))
+    console.log(item, 'with id', item.id, item.petAdded, item.petDonation))
 
   return (
     <div className="cart">
