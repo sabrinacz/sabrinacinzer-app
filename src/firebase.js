@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
+import React, {useState, useEffect } from 'react';
 import { initializeApp } from "firebase/app";
 import { getAnalytics, setUserProperties } from "firebase/analytics";
-import { collection, getDocs, doc, getDoc, getFirestore, query, where } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, getFirestore, query, where, addDoc } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -17,7 +18,6 @@ const firebaseConfig = {
   appId: "1:456149734378:web:56388e19e812ad10149893",
   measurementId: "G-N8PYF6M7ZK"
 };
-
 
 
 // Initialize Firebase
@@ -38,4 +38,18 @@ export const getItems = () => {
 export const getItemsbyId = (id) => {
     const docRef = doc(db, 'pets', id);  
     return getDoc(docRef)
+}
+
+// Takes data from orders
+export const sendOrder = (pet) => {
+  const colRef = collection(db, 'orders');  //reference to collection
+  const order = {
+    buyer: {name: 'fsdf',
+            phone:'111',
+            email:'sd@g.com'},
+    pets: [{ name: 'sdf', petDonation: 100}],
+    total:100
+  };
+  const ordersCollection = collection(db, 'orders');
+  addDoc(colRef, pet).then(({id})=> console.log(id)); //addDoc first is reference to collection, then is object to be stored
 }

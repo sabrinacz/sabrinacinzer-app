@@ -15,8 +15,10 @@ export const CartContextProvider = ({children}) => {
   //CartArray is an array with my items added to cart
   const [cart, setCart] = useState();
   const [CartArray, setCartArray] = useState([]);
+  const [orderArray, setOrderArray] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [TotalDonation, setTotalDonation] = useState();
+  console.log(CartArray)
 
   const [donation, setDonation] = useState();
 
@@ -67,7 +69,7 @@ export const CartContextProvider = ({children}) => {
 
 //Return cart
   return (
-  <CartContext.Provider value={{cart,cartCount,CartArray,TotalDonation,setTotalDonation,calculateTotalDonation,updateDonation, addToCart,removeFromCart}}>
+  <CartContext.Provider value={{cart,cartCount,CartArray,setCartArray,orderArray, setOrderArray,TotalDonation,setTotalDonation,calculateTotalDonation,updateDonation, addToCart,removeFromCart}}>
    {/* value is an object that exports two properties, an array and a method*/}
    {children}
   </CartContext.Provider>

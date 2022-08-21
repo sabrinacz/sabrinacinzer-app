@@ -14,11 +14,15 @@ const ItemListContainer = () => {
 
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(true);
+  const [giveErrorMessage, setGiveErrorMessage] = useState(true);
 
   const [categories, setCategory] = useState([
     { "name": "Gatos", "i": 1, "idCategory": "cat" },
     { "name": "Perros", "i": 2, "idCategory": "dog" }
   ]);
+
+
 
 
   useEffect(() => {
@@ -30,8 +34,12 @@ const ItemListContainer = () => {
                   id: doc.id, 
               }))
           );
+        setErrorMessage(false);
      })
-     .finally(() => {setLoading(false);});
+     .catch(()=> 
+        setErrorMessage(true),
+        setGiveErrorMessage('Error. No se pudo cargar.'))
+     .finally(() => setLoading(false));
     }
      else if (idCategory){
       const colRef = collection(db, 'pets'); 
@@ -44,12 +52,17 @@ const ItemListContainer = () => {
                   id: doc.id,
               })),
           );
+        setErrorMessage(false);
      })
-     .finally(() => {setLoading(false);});
+     .catch(()=> 
+        setErrorMessage(true),
+        setGiveErrorMessage('Error. No se pudo cargar.'))
+     .finally(() => setLoading(false));
      }
   }, [idCategory]);
 
-  
+  console.log(errorMessage, loading)
+
   return (
     <div>  
       
@@ -78,7 +91,15 @@ const ItemListContainer = () => {
       </div>
       ) : (
       <div>
-        <ItemList pets={pets} key={pets.id}/> 
+        { errorMessage ?
+        (
+          <div>
+           <div className="loading-items">{giveErrorMessage}</div>
+          </div> ) :
+        ( <>
+            <ItemList pets={pets} key={pets.id}/>
+          </>)
+        }
       </div>
       )}
       

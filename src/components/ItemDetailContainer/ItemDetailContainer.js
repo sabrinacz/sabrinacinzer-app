@@ -22,8 +22,8 @@ const ItemDetailContainer = () => {
         idPet = snapshot.id;
         setselectedPet(snapshot.data());
      })
-     .catch(()=> alert('error'))
-    .finally(() => {setLoading(false);});
+     .catch(()=> alert('No se pudo cargar la mascota.'))
+    .finally(() => {setLoading(false)});
     };
   }, [idPet]);
 
@@ -49,8 +49,8 @@ const ItemDetailContainer = () => {
         <div className="loading-items"> Cargando... </div>
       </div>
       ) : (
-      <div>
-        <ItemDetail selectedPet={selectedPet} idPet={idPet}/> 
+      <div> 
+        <ItemDetail selectedPet={selectedPet} idPet={idPet}/>
       </div>
       )}
       
