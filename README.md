@@ -1,9 +1,9 @@
 ## Author
 
-This project was created by Sabrina Cinzer, in August 2022.
+👩‍💻 This project was created by Sabrina Cinzer, in August 2022.
 Objective: Train for Coderhouse React course.
 
-Contact me!
+💻 Contact me!
 LinkedIn: https://linkedin.com/in/sabrinacinzer
 
 ## Framework
