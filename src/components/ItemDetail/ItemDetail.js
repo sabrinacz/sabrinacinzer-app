@@ -27,7 +27,7 @@ const ItemDetail = ({selectedPet, idPet}) => {
   }
 
   return (
-    <div className="item-detail-container container">
+    <div className="item-detail-container">
       <div className="column">
         <h1>Hola, soy {name}</h1>
   

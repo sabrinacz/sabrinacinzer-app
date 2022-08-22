@@ -18,7 +18,6 @@ export const CartContextProvider = ({children}) => {
   const [orderArray, setOrderArray] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [TotalDonation, setTotalDonation] = useState();
-  console.log(CartArray)
 
   const [donation, setDonation] = useState();
 
@@ -63,7 +62,6 @@ export const CartContextProvider = ({children}) => {
     let petFoundInArray = CartArray.find(x => x.id === idPet);
     if (petFoundInArray != '') {
       petFoundInArray.petDonation = count;
-      console.log(petFoundInArray, petFoundInArray.petDonation, count)
     }
   }
 

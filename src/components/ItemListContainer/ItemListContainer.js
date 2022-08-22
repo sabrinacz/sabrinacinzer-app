@@ -61,10 +61,9 @@ const ItemListContainer = () => {
      }
   }, [idCategory]);
 
-  console.log(errorMessage, loading)
 
   return (
-    <div>  
+    <div className='container'>  
       
       <h1>Nuestros rescatados</h1> 
       <h5>Ver por...</h5>

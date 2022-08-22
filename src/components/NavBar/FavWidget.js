@@ -6,7 +6,7 @@ export const FavWidget = () => {
   const {cartCount} = useContext(CartContext);
 
   return (
-    <button className="btn btn-outline-success ms-auto">
+    <button className="btn btn-outline ms-auto">
     {cartCount > 0 ? cartCount : ''}
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,14 @@ export const FavWidget = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="2"
-        d="M7 3C4.239 3 2 5.216 2 7.95c0 2.207.875 7.445 9.488 12.74a.985.985 0 001.024 0C21.125 15.395 22 10.157 22 7.95 22 5.216 19.761 3 17 3s-5 3-5 3-2.239-3-5-3z"
+        d="M6 21a2 2 0 100-4 2 2 0 000 4zM17 21a2 2 0 100-4 2 2 0 000 4zM17 17H6V3H4"
+      ></path>
+      <path
+        stroke="#000"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M6 5l14 1-1 7H6"
       ></path>
     </svg>
     </button>

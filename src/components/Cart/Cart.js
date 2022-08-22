@@ -2,7 +2,7 @@ import React, { useContext, useState, useRef } from 'react';
 import { CartContext } from '../../cartContext/cartContext';
 import CartContainer from '../CartContainer/CartContainer';
 import { NavLink, Link } from 'react-router-dom';
-import { sendOrder } from '../../firebase';
+import { sendOrder, updateOrder } from '../../firebase';
 
 const Cart = () => {
   
@@ -44,21 +44,22 @@ const Cart = () => {
 
   const submitOrder = (e) => {
     e.preventDefault();
-    checkRequired(userPhone, 'Teléfono');
-    checkRequiredEmail(userEmail, 'Email', ".com");
-    checkRequiredEmail2(userEmail, userEmail2, 'Repetir email');
-    checkRequired(userName, 'Nombre y apellido');
-    const order = { userName, userEmail, userPhone, TotalDonation };
-    sendOrder(order);
+    let check1= checkRequired(userPhone, 'Teléfono');
+    let check2= checkRequiredEmail(userEmail, 'Email', ".com");
+    let check3=checkRequiredEmail2(userEmail, userEmail2, 'Repetir email');
+    let check4= checkRequired(userName, 'Nombre y apellido');
+    const order = { userName, userEmail, userPhone, TotalDonation, CartArray };
+     if(check1== true && check2== true && check3== true && check4 == true) {
+    sendOrder(order)
     showSuccess('Formulario enviado')
     const _orderArray = orderArray.concat(order);
     setOrderArray(_orderArray)
-    console.log(orderArray)  
+    }
+    updateOrder(order.id, { userName:userName, userEmail: userEmail, userPhone:userPhone})
   }
 
   const checkRequired = (input, label) => {
-    console.log(input)
-        if (input == undefined) {
+        if (input == undefined || input == ' ' || input == '') {
             showError(`${(label)} es inválido. Error al enviar`);
             return false;
         } else if (input != '') {
@@ -116,7 +117,7 @@ const Cart = () => {
     <h1 className='text-right'>Total: ${TotalDonation}</h1>
     
     { showForm ? (
-    <div className='mt-5'>
+    <div className='mt-5 paymentsection container-fluid pt-2 pb-1'>
     <h3 className='text-right'>Para pagar enviar el formulario </h3>
     <h6>Recibirás un correo con instrucciones.</h6>
         <form id="formpayment">

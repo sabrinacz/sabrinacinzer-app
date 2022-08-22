@@ -9,8 +9,11 @@
 
 :root {
     --white:#fff;
+    --beige: #F4F1F1;
     --black90: #161616;
     --gray10: #b2b2b2;
+    --primary-color: #00883F;
+    --primary-color-darker: #005829;
 }
 
 h1 {
@@ -26,13 +29,42 @@ h3 {
     font-size: 1.5rem;
 }
 
+body {
+    background-color: var(--white);
+}
+
+.navbar {
+    background-color: #D8F5DE!important;
+    color:var(--black90);
+    fill:var(--black90);
+    margin-bottom:2rem;
+}
+
+.navbar svg path {
+    stroke:var(--black90);
+}
+
+.navbar a, .navbar button {
+    color:var(--black90);
+}
+.navbar a:hover, .navbar button:hover {
+    color:var(--black90);
+}
+
+
 .pet-card {
     max-width: 300px;
     padding: 1rem;
     margin: 1rem;
-    background-color:var(--white) ;
-    border: 1px solid var(--gray10);
-    border-radius: 10px;
+    background-color:var(--beige) ;
+    border: 0.5px solid var(--gray10);
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.pet-card h3 {
+    margin-top:0.5rem;
+    color:var(--primary-color-darker);
 }
 
 .item-list-container {
@@ -57,7 +89,7 @@ h3 {
 
 .picture-container img {
     aspect-ratio: 1 / 1;
-    border-radius:10px;
+    border-radius:5px;
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -68,8 +100,19 @@ h3 {
 }
 
 .btn-primary {
-    background-color: var(--black90);
-    border:1px solid var(--black90);
+    background-color: var(--primary-color);
+    border:1px solid var(--primary-color);
+    color:var(--white);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--primary-color-darker);
+    border:1px solid var(--primary-color-darker);
+    color:var(--white);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    border:1px solid var(--primary-color-darker);
     color:var(--white);
 }
 
@@ -99,8 +142,9 @@ h3 {
 
 .footer-container {
     display: flex;
-    min-height: 300px;
-    background-color: var(--gray10);
+    min-height: 100px;
+    background-color: var(--beige);
+    margin-top:3rem;
 }
 
 .cart-card {
@@ -124,7 +168,7 @@ h3 {
     line-height: 110%;
     margin:10px 0px;
     padding: 16px;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .message a {
     font-size: 0.85rem;
@@ -140,4 +184,8 @@ h3 {
 
 .cursor-not-allowed {
     cursor: not-allowed;
+}
+
+.paymentsection {
+    background-color:var(--beige);
 }

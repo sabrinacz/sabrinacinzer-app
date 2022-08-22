@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
         <NavLink to={"/category/"}
               className={"breadcrumb-link"}>
               Volver a todos los rescatados

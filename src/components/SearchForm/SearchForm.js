@@ -11,7 +11,6 @@ const SearchForm = ({onSearch}) => {
 
     const onchangeInput = (e) => {
         setVal(e.target.value);
-        console.log(e.target.value)
     }
 
   return (
